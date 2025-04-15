@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+.footer {
+	background: linear-gradient(90deg, #343333 38.05%, #484848 69.22%, #282828 98.98%);
+	width: 100%;
+	font-family: 'Roboto', sans-serif;
+	font-weight: 400;
+	font-size: 20px;
+	color: rgba(255, 255, 255, 0.6);
+}
+.container {
+	display: flex;
+	justify-content: space-around;
+	padding-top: 80px;
+}
+.info,
+.company,
+.help,
+.FAQ,
+.resources {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+}
+.text {
+	max-width: 248px;
+	margin-top: 25px;
+	margin-bottom: 25px;
+	line-height: 27px;
+	text-align: justify;
+}
+.social {
+	display: flex;
+	margin-bottom: 30px;
+	gap: 12px;
+}
+.twitter,
+.facebook,
+.instagram,
+.github {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: white;
+	padding: 3px;
+	border-radius: 50%;
+	width: 28px;
+	height: 28px;
+	color: black;
+	cursor: pointer;
+	transition:
+		color 0.1s ease,
+		background-color 0.3s ease;
+}
+.twitter:hover,
+.facebook:hover,
+.instagram:hover,
+.github:hover {
+	color: white;
+	background-color: rgba(224, 164, 73, 1);
+}
+.head {
+	color: rgba(224, 164, 73, 1);
+}
+
+.modsenGallery {
+	margin-left: 74.41px;
+	padding-bottom: 30px;
+}
+
+.instagram {
+	position: relative;
+}

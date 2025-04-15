@@ -3,7 +3,7 @@ import { Category } from './pages/Category/Category';
 import { Favourites } from './pages/Favourites/Favourites';
 import { Images } from './pages/Images/Images';
 import { NotFound } from './pages/NotFound/NotFound';
-import { Layout } from './pages/Layout';
+import { Layout } from './pages/Layout/Layout';
 
 function App() {
 	return (

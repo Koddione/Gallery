@@ -1,6 +1,6 @@
 import { NavLink } from 'react-router';
 import styles from './HeaderNav.module.css';
-import { LogoModsen } from './components/LogoModsen/LogoModsen';
+import { LogoModsen } from '../../../LogoModsen/LogoModsen';
 import { CategoryLogo } from './components/CategoryLogo/CategoryLogo';
 import { ImagesLogo } from './components/ImagesLogo/ImagesLogo';
 import { FavouritesLogo } from './components/FavouritesLogo/FavouritesLogo';
