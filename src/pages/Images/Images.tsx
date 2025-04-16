@@ -1,27 +1,14 @@
 import styles from './Images.module.css';
-import { useEffect, useState } from 'react';
-import { fetchPhotosByCategory } from '../../api/unsplash';
 import { useSearchParams } from 'react-router-dom';
 import { FavouritesLogo } from '../../components/FavouritesLogo/FavouritesLogo';
 import { truncateText } from '../../utils/truncateText';
 
 import { Pagination } from './components/Pagination/Pagination';
 import { Sorting } from './components/Sorting/Sorting';
-
-interface UnsplashPhoto {
-	id: string;
-	urls: {
-		small: string;
-	};
-	alt_description: string;
-	name: string | null;
-}
+import { usePhotos } from '../../hooks/usePhotos';
 
 export const Images = () => {
 	const [searchParams, setSearchParams] = useSearchParams();
-	const [photos, setPhotos] = useState<UnsplashPhoto[]>([]);
-	const [totalPages, setTotalPages] = useState(1);
-	const [isPageOutOfBounds, setIsPageOutOfBounds] = useState(false);
 
 	const category = searchParams.get('category') || '';
 	const page = parseInt(searchParams.get('page') || '1');
@@ -33,27 +20,12 @@ export const Images = () => {
 		setSearchParams({ category, page: '1', sort: newSort });
 	};
 
-	useEffect(() => {
-		if (!category) return;
-		const loadPhotos = async () => {
-			const perPage = 12;
-			const response = await fetchPhotosByCategory(
-				category,
-				perPage,
-				page,
-				sort,
-				search,
-			);
-			if (page > response.total_pages) {
-				setIsPageOutOfBounds(true);
-				return;
-			}
-			setPhotos(response.results);
-			setTotalPages(response.total_pages);
-			setIsPageOutOfBounds(false);
-		};
-		loadPhotos();
-	}, [category, page, sort, search]);
+	const { photos, totalPages, isPageOutOfBounds, setIsPageOutOfBounds } = usePhotos(
+		category,
+		page,
+		sort,
+		search,
+	);
 
 	const handlePageChange = (newPage: number) => {
 		if (newPage <= totalPages && newPage >= 1) {

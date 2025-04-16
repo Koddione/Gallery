@@ -20,6 +20,11 @@
 	flex-direction: column;
 	width: 285px;
 	height: 232.77px;
+	cursor: pointer;
+	transition: box-shadow 0.2s ease;
+}
+.photo:hover {
+	box-shadow: 0px 2px 5px rgb(0, 0, 0);
 }
 .description {
 	position: absolute;
