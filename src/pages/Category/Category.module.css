@@ -1,0 +1,32 @@
+.container {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 26px;
+	max-width: 909px;
+	margin: 0 auto;
+	margin-top: 40px;
+}
+
+.category {
+	position: relative;
+	display: flex;
+}
+.imageCategory {
+	width: 285px;
+	height: 244px;
+}
+
+.textCategory {
+	position: absolute;
+	font-size: 20px;
+	font-family: 'Roboto', sans-serif;
+	top: 85%;
+	color: white;
+	left: 10px;
+	z-index: 10;
+	text-shadow:
+		-1px -1px 0 black,
+		1px -1px 0 black,
+		-1px 1px 0 black,
+		1px 1px 0 black;
+}
