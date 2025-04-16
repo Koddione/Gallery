@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import { Left } from '../left';
-import { Right } from '../right';
+import { Left } from '../../../../components/left';
+import { Right } from '../../../../components/right';
 import styles from './Pagination.module.css';
 
 interface PaginationProps {

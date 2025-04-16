@@ -1,14 +1,6 @@
 import { useEffect, useState } from 'react';
 import { fetchPhotosByCategory } from '../api/unsplash';
-
-interface UnsplashPhoto {
-	id: string;
-	urls: {
-		small: string;
-	};
-	alt_description: string;
-	name: string | null;
-}
+import { UnsplashPhoto } from '../types/unsplashPhoto';
 
 export const usePhotos = (
 	category: string,
