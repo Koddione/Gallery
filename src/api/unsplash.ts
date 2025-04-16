@@ -11,10 +11,12 @@ export const fetchPhotosByCategory = async (
 	perPage = 12,
 	page = 1,
 	orderBy: 'relevant' | 'latest' = 'relevant',
+	search: string = '',
 ) => {
+	const query = search ? `${category} ${search}` : category;
 	const response = await unsplashApi.get('/search/photos', {
 		params: {
-			query: category,
+			query,
 			per_page: perPage,
 			page,
 			order_by: orderBy,

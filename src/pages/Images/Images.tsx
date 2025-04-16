@@ -27,6 +27,7 @@ export const Images = () => {
 	const page = parseInt(searchParams.get('page') || '1');
 	const sortParamRaw = searchParams.get('sort');
 	const sort: 'relevant' | 'latest' = sortParamRaw === 'latest' ? 'latest' : 'relevant';
+	const search = searchParams.get('search') || '';
 
 	const handleSortChange = (newSort: string) => {
 		setSearchParams({ category, page: '1', sort: newSort });
@@ -36,7 +37,13 @@ export const Images = () => {
 		if (!category) return;
 		const loadPhotos = async () => {
 			const perPage = 12;
-			const response = await fetchPhotosByCategory(category, perPage, page, sort);
+			const response = await fetchPhotosByCategory(
+				category,
+				perPage,
+				page,
+				sort,
+				search,
+			);
 			if (page > response.total_pages) {
 				setIsPageOutOfBounds(true);
 				return;
@@ -46,7 +53,7 @@ export const Images = () => {
 			setIsPageOutOfBounds(false);
 		};
 		loadPhotos();
-	}, [category, page, sort]);
+	}, [category, page, sort, search]);
 
 	const handlePageChange = (newPage: number) => {
 		if (newPage <= totalPages && newPage >= 1) {
