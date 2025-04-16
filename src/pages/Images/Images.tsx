@@ -21,6 +21,7 @@ export const Images = () => {
 	const [searchParams, setSearchParams] = useSearchParams();
 	const [photos, setPhotos] = useState<UnsplashPhoto[]>([]);
 	const [totalPages, setTotalPages] = useState(1);
+	const [isPageOutOfBounds, setIsPageOutOfBounds] = useState(false);
 
 	const category = searchParams.get('category') || '';
 	const page = parseInt(searchParams.get('page') || '1');
@@ -36,20 +37,31 @@ export const Images = () => {
 		const loadPhotos = async () => {
 			const perPage = 12;
 			const response = await fetchPhotosByCategory(category, perPage, page, sort);
+			if (page > response.total_pages) {
+				setIsPageOutOfBounds(true);
+				return;
+			}
 			setPhotos(response.results);
 			setTotalPages(response.total_pages);
+			setIsPageOutOfBounds(false);
 		};
 		loadPhotos();
 	}, [category, page, sort]);
 
 	const handlePageChange = (newPage: number) => {
-		setSearchParams({ category, page: newPage.toString() });
+		if (newPage <= totalPages && newPage >= 1) {
+			setSearchParams({ category, page: newPage.toString() });
+		} else {
+			setIsPageOutOfBounds(true);
+		}
 	};
 
 	if (!category) {
 		return <p>Выберите категорию для отображения фотографий.</p>;
 	}
-
+	if (isPageOutOfBounds) {
+		return <p>Страница не существует. Пожалуйста, выберите существующую страницу.</p>;
+	}
 	return (
 		<div className={styles.container}>
 			<Sorting onSortChange={handleSortChange} />
