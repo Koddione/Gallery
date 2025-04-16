@@ -3,7 +3,7 @@ import styles from './HeaderNav.module.css';
 import { LogoModsen } from '../../../LogoModsen/LogoModsen';
 import { CategoryLogo } from './components/CategoryLogo/CategoryLogo';
 import { ImagesLogo } from './components/ImagesLogo/ImagesLogo';
-import { FavouritesLogo } from './components/FavouritesLogo/FavouritesLogo';
+import { FavouritesLogo } from '../../../FavouritesLogo/FavouritesLogo';
 
 export const HeaderNav = () => {
 	return (

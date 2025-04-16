@@ -2,6 +2,7 @@ import styles from './Category.module.css';
 import { useEffect, useState } from 'react';
 import { categories } from '../../constants/categories';
 import { fetchPhotosByCategory } from '../../api/unsplash';
+import { useNavigate } from 'react-router-dom';
 
 type CategoryPreview = {
 	category: string;
@@ -10,6 +11,8 @@ type CategoryPreview = {
 
 export const Category = () => {
 	const [categoryPreviews, setCategoryPreviews] = useState<CategoryPreview[]>([]);
+	const navigate = useNavigate();
+
 	useEffect(() => {
 		const loadPreviews = async () => {
 			const previews = await Promise.all(
@@ -18,7 +21,7 @@ export const Category = () => {
 						const photos = await fetchPhotosByCategory(category, 1);
 						return {
 							category,
-							imageUrl: photos[0]?.urls?.small || '',
+							imageUrl: photos.results[0]?.urls?.small || '',
 						};
 					} catch (error) {
 						console.error(`Ошибка загрузки превью для "${category}":`, error);
@@ -35,11 +38,19 @@ export const Category = () => {
 		loadPreviews();
 	}, []);
 
+	const handleClick = (category: string) => {
+		navigate(`/images?category=${category}&page=1`);
+	};
+
 	return (
 		<>
 			<div className={styles.container}>
 				{categoryPreviews.map(({ category, imageUrl }) => (
-					<div className={styles.category} key={category}>
+					<div
+						className={styles.category}
+						key={category}
+						onClick={() => handleClick(category)}
+					>
 						{imageUrl ? (
 							<img
 								src={imageUrl}
