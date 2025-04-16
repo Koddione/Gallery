@@ -4,9 +4,9 @@ import { fetchPhotosByCategory } from '../../api/unsplash';
 import { useSearchParams } from 'react-router-dom';
 import { FavouritesLogo } from '../../components/FavouritesLogo/FavouritesLogo';
 import { truncateText } from '../../utils/truncateText';
-import { Right } from './components/right';
-import { Left } from './components/left';
+
 import { Pagination } from './components/Pagination/Pagination';
+import { Sorting } from './components/Sorting/Sorting';
 
 interface UnsplashPhoto {
 	id: string;
@@ -19,21 +19,28 @@ interface UnsplashPhoto {
 
 export const Images = () => {
 	const [searchParams, setSearchParams] = useSearchParams();
-	const category = searchParams.get('category') || '';
-	const page = parseInt(searchParams.get('page') || '1');
 	const [photos, setPhotos] = useState<UnsplashPhoto[]>([]);
 	const [totalPages, setTotalPages] = useState(1);
+
+	const category = searchParams.get('category') || '';
+	const page = parseInt(searchParams.get('page') || '1');
+	const sortParamRaw = searchParams.get('sort');
+	const sort: 'relevant' | 'latest' = sortParamRaw === 'latest' ? 'latest' : 'relevant';
+
+	const handleSortChange = (newSort: string) => {
+		setSearchParams({ category, page: '1', sort: newSort });
+	};
 
 	useEffect(() => {
 		if (!category) return;
 		const loadPhotos = async () => {
 			const perPage = 12;
-			const response = await fetchPhotosByCategory(category, perPage, page);
+			const response = await fetchPhotosByCategory(category, perPage, page, sort);
 			setPhotos(response.results);
 			setTotalPages(response.total_pages);
 		};
 		loadPhotos();
-	}, [category, page]);
+	}, [category, page, sort]);
 
 	const handlePageChange = (newPage: number) => {
 		setSearchParams({ category, page: newPage.toString() });
@@ -45,6 +52,7 @@ export const Images = () => {
 
 	return (
 		<div className={styles.container}>
+			<Sorting onSortChange={handleSortChange} />
 			<div className={styles.photosFromCategory}>
 				{photos.map((photo) => (
 					<div key={photo.id} className={styles.photo}>

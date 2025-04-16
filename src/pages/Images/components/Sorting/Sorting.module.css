@@ -1,0 +1,46 @@
+.sorting {
+	margin: 25px 0;
+	display: flex;
+	gap: 11px;
+	justify-content: flex-end;
+	align-items: center;
+}
+.sorting p {
+	font-family: 'Lexend Deca', sans-serif;
+	font-size: 17.54px;
+}
+.select {
+	appearance: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	color: rgba(196, 196, 196, 1);
+	font-family: 'Montserrat';
+	font-size: 16px;
+	border-radius: 20px;
+	padding: 10px 0;
+	padding-left: 16px;
+	padding-right: 54px;
+	background-size: 12px;
+}
+
+.selectWrapper {
+	position: relative;
+}
+.selectWrapper:focus-within .arrow {
+	color: #000;
+}
+.select:focus {
+	color: #000;
+}
+.arrow {
+	position: absolute;
+	top: 16px;
+	right: 20px;
+	color: rgba(196, 196, 196, 1);
+	pointer-events: none;
+	transition: transform 0.3s ease;
+}
+.rotated {
+	transform: rotate(180deg);
+	transition: transform 0.3s ease;
+}
