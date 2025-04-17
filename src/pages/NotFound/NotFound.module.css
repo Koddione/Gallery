@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Signika&display=swap');
+
+.container {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+.error {
+	text-align: center;
+	font-size: 48px;
+	color: rgba(241, 121, 0, 1);
+	margin-top: 85px;
+	font-family: 'Signika', sans-serif;
+	font-weight: 400;
+}
+.error span {
+	font-size: 128px;
+}
