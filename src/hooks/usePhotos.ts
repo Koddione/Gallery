@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { fetchPhotosByCategory } from '../api/unsplash';
+import { fetchGeneralPhotos, fetchPhotosByCategory } from '../api/unsplash';
 import { UnsplashPhoto } from '../types/unsplashPhoto';
 
 export const usePhotos = (
@@ -13,9 +13,16 @@ export const usePhotos = (
 	const [isPageOutOfBounds, setIsPageOutOfBounds] = useState(false);
 
 	useEffect(() => {
-		if (!category) return;
 		const loadPhotos = async () => {
 			const perPage = 12;
+			if (!category && !search) {
+				const validSort = sort === 'latest' ? 'latest' : 'popular';
+				const data = await fetchGeneralPhotos(perPage, page, validSort);
+				setPhotos(data);
+				setTotalPages(100);
+				setIsPageOutOfBounds(false);
+				return;
+			}
 			const response = await fetchPhotosByCategory(
 				category,
 				perPage,

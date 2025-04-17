@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { UnsplashPhoto } from '../types/unsplashPhoto';
 
 export const unsplashApi = axios.create({
 	baseURL: 'https://api.unsplash.com',
@@ -6,6 +7,7 @@ export const unsplashApi = axios.create({
 		Authorization: `Client-ID ${import.meta.env.VITE_UNSPLASH_ACCESS_KEY}`,
 	},
 });
+
 export const fetchPhotosByCategory = async (
 	category: string,
 	perPage = 12,
@@ -23,5 +25,20 @@ export const fetchPhotosByCategory = async (
 		},
 	});
 
+	return response.data;
+};
+
+export const fetchGeneralPhotos = async (
+	perPage = 12,
+	page = 1,
+	orderBy: 'latest' | 'oldest' | 'popular' = 'latest',
+): Promise<UnsplashPhoto[]> => {
+	const response = await unsplashApi.get('/photos', {
+		params: {
+			per_page: perPage,
+			page,
+			order_by: orderBy,
+		},
+	});
 	return response.data;
 };
