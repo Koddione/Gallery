@@ -31,6 +31,14 @@
 	cursor: pointer;
 }
 
+.filled svg path {
+	fill: rgba(241, 121, 0, 1);
+}
+
 .save:hover svg path {
 	fill: rgba(241, 121, 0, 1);
+}
+
+.filled:hover svg path {
+	fill: none;
 }

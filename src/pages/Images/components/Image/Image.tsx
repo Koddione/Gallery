@@ -9,9 +9,18 @@ interface ImageProps {
 	onClose: () => void;
 	onPrev: () => void;
 	onNext: () => void;
+	isFavourite: boolean;
+	onFavouriteChange: (isFavourite: boolean) => void;
 }
 
-export const Image = ({ photo, onClose, onPrev, onNext }: ImageProps) => {
+export const Image = ({
+	photo,
+	onClose,
+	onPrev,
+	onNext,
+	isFavourite,
+	onFavouriteChange,
+}: ImageProps) => {
 	return (
 		<>
 			<div className={styles.shadow}></div>
@@ -44,7 +53,11 @@ export const Image = ({ photo, onClose, onPrev, onNext }: ImageProps) => {
 							alt={photo.alt_description || 'Image'}
 						/>
 						<div className={styles.description}>
-							<PhotoCard photo={photo} />
+							<PhotoCard
+								photo={photo}
+								isFavourite={isFavourite}
+								onFavouriteChange={onFavouriteChange}
+							/>
 						</div>
 					</div>
 					<button className={styles.right} onClick={onNext}>

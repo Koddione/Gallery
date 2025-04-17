@@ -5,13 +5,17 @@ import { Pagination } from './components/Pagination/Pagination';
 import { Sorting } from './components/Sorting/Sorting';
 import { usePhotos } from '../../hooks/usePhotos';
 import { PhotoCard } from '../../components/PhotoCard/PhotoCard';
-import { useState } from 'react';
 import { Image } from './components/Image/Image';
+import { usePhotoViewer } from '../../hooks/usePhotoViewer';
+import { useState } from 'react';
+import { UnsplashPhoto } from '../../types/unsplashPhoto';
 
 export const Images = () => {
 	const [searchParams, setSearchParams] = useSearchParams();
-	const [isOpenPhoto, setIsOpenPhoto] = useState(false);
-	const [selectedPhotoIndex, setSelectedPhotoIndex] = useState<number>(0);
+	const [favouriteIds, setFavouriteIds] = useState<string[]>(() => {
+		const stored = JSON.parse(sessionStorage.getItem('favourites') || '[]');
+		return stored.map((p: UnsplashPhoto) => p.id);
+	});
 
 	const category = searchParams.get('category') || '';
 	const page = parseInt(searchParams.get('page') || '1');
@@ -21,6 +25,9 @@ export const Images = () => {
 
 	const { photos, totalPages, isPageOutOfBounds, setIsPageOutOfBounds, isLoading } =
 		usePhotos(category, page, sort, search);
+
+	const { isOpen, selectedPhoto, openPhoto, closePhoto, showPrev, showNext } =
+		usePhotoViewer(photos);
 
 	const handleSortChange = (newSort: string) => {
 		setSearchParams({ category, page: '1', sort: newSort });
@@ -34,64 +41,68 @@ export const Images = () => {
 		}
 	};
 
-	const handleOpenPhoto = (index: number) => {
-		setSelectedPhotoIndex(index);
-		setIsOpenPhoto(true);
-	};
-	const handlePrevPhoto = () => {
-		setSelectedPhotoIndex((prevIndex) =>
-			prevIndex === 0 ? photos.length - 1 : prevIndex - 1,
+	const handleFavouriteChange = (photoId: string, isFavourite: boolean) => {
+		setFavouriteIds((prev) =>
+			isFavourite ? [...prev, photoId] : prev.filter((id) => id !== photoId),
 		);
 	};
-	const handleNextPhoto = () => {
-		setSelectedPhotoIndex((prevIndex) =>
-			prevIndex === photos.length - 1 ? 0 : prevIndex + 1,
-		);
-	};
-
-	if (isPageOutOfBounds) {
-		return <p>Страница не существует. Пожалуйста, выберите существующую страницу.</p>;
-	}
 
 	return (
 		<div className={styles.container}>
-			<Sorting onSortChange={handleSortChange} />
+			{photos.length !== 0 && <Sorting onSortChange={handleSortChange} />}
 			<div className={styles.photosFromCategory}>
 				{isLoading ? (
 					<div className={styles.spinnerWrapper}>
 						<div className={styles.spinner}></div>
 						<p className={styles.loading}>Uploading images...</p>
 					</div>
+				) : photos.length === 0 ? (
+					<p className="notFound">
+						The search didn't yield any results, please try <span>Again</span>
+						.
+					</p>
 				) : (
 					photos.map((photo, index) => (
 						<div
 							key={photo.id}
 							className={styles.photo}
-							onClick={() => handleOpenPhoto(index)}
+							onClick={() => openPhoto(index)}
 						>
 							<img
 								className={styles.image}
 								src={photo.urls.small}
 								alt={photo.alt_description || 'Unsplash Image'}
 							/>
-							<PhotoCard photo={photo} />
+							<PhotoCard
+								photo={photo}
+								isFavourite={favouriteIds.includes(photo.id)}
+								onFavouriteChange={(isFav) =>
+									handleFavouriteChange(photo.id, isFav)
+								}
+							/>
 						</div>
 					))
 				)}
 			</div>
-			{isOpenPhoto && (
+			{isOpen && selectedPhoto && (
 				<Image
-					photo={photos[selectedPhotoIndex]}
-					onClose={() => setIsOpenPhoto(false)}
-					onPrev={handlePrevPhoto}
-					onNext={handleNextPhoto}
+					photo={selectedPhoto}
+					onClose={closePhoto}
+					onPrev={showPrev}
+					onNext={showNext}
+					isFavourite={favouriteIds.includes(selectedPhoto.id)}
+					onFavouriteChange={(isFav) =>
+						handleFavouriteChange(selectedPhoto.id, isFav)
+					}
 				/>
 			)}
-			<Pagination
-				page={page}
-				handlePageChange={handlePageChange}
-				totalPages={totalPages}
-			/>
+			{photos.length !== 0 && (
+				<Pagination
+					page={page}
+					handlePageChange={handlePageChange}
+					totalPages={totalPages}
+				/>
+			)}
 		</div>
 	);
 };

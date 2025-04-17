@@ -14,3 +14,14 @@ a:active {
 a:hover {
 	color: rgba(224, 164, 73, 1);
 }
+.notFound {
+	margin-top: 122px;
+	font-family: 'Lexend Deca', sans-serif;
+	font-weight: 700;
+	font-size: 64px;
+	max-width: 684px;
+	text-align: center;
+}
+.notFound span {
+	color: rgba(241, 121, 0, 1);
+}
