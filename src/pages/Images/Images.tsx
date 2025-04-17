@@ -19,12 +19,8 @@ export const Images = () => {
 	const sort: 'relevant' | 'latest' = sortParamRaw === 'latest' ? 'latest' : 'relevant';
 	const search = searchParams.get('search') || '';
 
-	const { photos, totalPages, isPageOutOfBounds, setIsPageOutOfBounds } = usePhotos(
-		category,
-		page,
-		sort,
-		search,
-	);
+	const { photos, totalPages, isPageOutOfBounds, setIsPageOutOfBounds, isLoading } =
+		usePhotos(category, page, sort, search);
 
 	const handleSortChange = (newSort: string) => {
 		setSearchParams({ category, page: '1', sort: newSort });
@@ -56,24 +52,32 @@ export const Images = () => {
 	if (isPageOutOfBounds) {
 		return <p>Страница не существует. Пожалуйста, выберите существующую страницу.</p>;
 	}
+
 	return (
 		<div className={styles.container}>
 			<Sorting onSortChange={handleSortChange} />
 			<div className={styles.photosFromCategory}>
-				{photos.map((photo, index) => (
-					<div
-						key={photo.id}
-						className={styles.photo}
-						onClick={() => handleOpenPhoto(index)}
-					>
-						<img
-							className={styles.image}
-							src={photo.urls.small}
-							alt={photo.alt_description || 'Unsplash Image'}
-						/>
-						<PhotoCard photo={photo} />
+				{isLoading ? (
+					<div className={styles.spinnerWrapper}>
+						<div className={styles.spinner}></div>
+						<p className={styles.loading}>Uploading images...</p>
 					</div>
-				))}
+				) : (
+					photos.map((photo, index) => (
+						<div
+							key={photo.id}
+							className={styles.photo}
+							onClick={() => handleOpenPhoto(index)}
+						>
+							<img
+								className={styles.image}
+								src={photo.urls.small}
+								alt={photo.alt_description || 'Unsplash Image'}
+							/>
+							<PhotoCard photo={photo} />
+						</div>
+					))
+				)}
 			</div>
 			{isOpenPhoto && (
 				<Image
