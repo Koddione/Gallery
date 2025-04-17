@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { UnsplashPhoto } from '../types/unsplashPhoto';
+import { UNSPLASH_ENDPOINTS } from '../constants/apiEndpoints';
 
 export const unsplashApi = axios.create({
 	baseURL: 'https://api.unsplash.com',
@@ -15,8 +16,8 @@ export const fetchPhotosByCategory = async (
 	orderBy: 'relevant' | 'latest' = 'relevant',
 	search: string = '',
 ) => {
-	const query = search ? `${category} ${search}` : category;
-	const response = await unsplashApi.get('/search/photos', {
+	const query = [category, search].filter(Boolean).join(' ');
+	const response = await unsplashApi.get(UNSPLASH_ENDPOINTS.searchPhotos, {
 		params: {
 			query,
 			per_page: perPage,
@@ -33,7 +34,7 @@ export const fetchGeneralPhotos = async (
 	page = 1,
 	orderBy: 'latest' | 'oldest' | 'popular' = 'latest',
 ): Promise<UnsplashPhoto[]> => {
-	const response = await unsplashApi.get('/photos', {
+	const response = await unsplashApi.get(UNSPLASH_ENDPOINTS.photos, {
 		params: {
 			per_page: perPage,
 			page,
