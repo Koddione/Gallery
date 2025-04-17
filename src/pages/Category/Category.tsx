@@ -11,6 +11,7 @@ type CategoryPreview = {
 
 export const Category = () => {
 	const [categoryPreviews, setCategoryPreviews] = useState<CategoryPreview[]>([]);
+	const [isLoading, setIsLoading] = useState(true);
 	const navigate = useNavigate();
 
 	useEffect(() => {
@@ -33,6 +34,7 @@ export const Category = () => {
 				}),
 			);
 			setCategoryPreviews(previews);
+			setIsLoading(false);
 		};
 
 		loadPreviews();
@@ -45,24 +47,31 @@ export const Category = () => {
 	return (
 		<>
 			<div className={styles.container}>
-				{categoryPreviews.map(({ category, imageUrl }) => (
-					<div
-						className={styles.category}
-						key={category}
-						onClick={() => handleClick(category)}
-					>
-						{imageUrl ? (
-							<img
-								src={imageUrl}
-								alt={category}
-								className={styles.imageCategory}
-							/>
-						) : (
-							<div>Нет фото</div>
-						)}
-						<div className={styles.textCategory}>{category}</div>
+				{isLoading ? (
+					<div className={styles.spinnerWrapper}>
+						<div className={styles.spinner}></div>
+						<p className={styles.loading}>Uploading images...</p>
 					</div>
-				))}
+				) : (
+					categoryPreviews.map(({ category, imageUrl }) => (
+						<div
+							className={styles.category}
+							key={category}
+							onClick={() => handleClick(category)}
+						>
+							{imageUrl ? (
+								<img
+									src={imageUrl}
+									alt={category}
+									className={styles.imageCategory}
+								/>
+							) : (
+								<div>Нет фото</div>
+							)}
+							<div className={styles.textCategory}>{category}</div>
+						</div>
+					))
+				)}
 			</div>
 		</>
 	);
