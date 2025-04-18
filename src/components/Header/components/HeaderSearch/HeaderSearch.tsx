@@ -2,17 +2,21 @@ import { useLocation, useSearchParams } from 'react-router';
 import styles from './HeaderSearch.module.css';
 import searchIco from '../../../../assets/seatchIco.png';
 import { useEffect, useRef, useState } from 'react';
+import { ROUTES } from '../../../../constants/routes';
+import { SEARCH_PARAMS } from '../../../../constants/searchParams';
 
 export const HeaderSearch = () => {
 	const [searchParams, setSearchParams] = useSearchParams();
 	const location = useLocation();
-	const showInput = location.pathname === '/images';
+	const showInput = location.pathname === ROUTES.IMAGES;
 
-	const [inputValue, setInputValue] = useState(searchParams.get('search') || '');
+	const [inputValue, setInputValue] = useState(
+		searchParams.get(SEARCH_PARAMS.SEARCH) || '',
+	);
 	const debounceTimeout = useRef<NodeJS.Timeout | null>(null);
 
 	useEffect(() => {
-		setInputValue(searchParams.get('search') || '');
+		setInputValue(searchParams.get(SEARCH_PARAMS.SEARCH) || '');
 	}, [searchParams]);
 
 	const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -26,8 +30,8 @@ export const HeaderSearch = () => {
 		debounceTimeout.current = setTimeout(() => {
 			setSearchParams((prev) => {
 				const newParams = new URLSearchParams(prev);
-				newParams.set('search', value);
-				newParams.set('page', '1');
+				newParams.set(SEARCH_PARAMS.SEARCH, value);
+				newParams.set(SEARCH_PARAMS.PAGE, '1');
 				return newParams;
 			});
 		}, 500);

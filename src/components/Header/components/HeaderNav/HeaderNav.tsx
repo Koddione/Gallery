@@ -4,10 +4,11 @@ import { LogoModsen } from '../../../LogoModsen/LogoModsen';
 import { CategoryLogo } from './components/CategoryLogo/CategoryLogo';
 import { ImagesLogo } from './components/ImagesLogo/ImagesLogo';
 import { FavouritesLogo } from '../../../FavouritesLogo/FavouritesLogo';
+import { ROUTES } from '../../../../constants/routes';
 
 export const HeaderNav = () => {
 	const location = useLocation();
-	const isFavouritesPage = location.pathname === '/favourites';
+	const isFavouritesPage = location.pathname === ROUTES.FAVOURITES;
 	return (
 		<div className={styles.header}>
 			<div className={styles.info}>
@@ -15,7 +16,7 @@ export const HeaderNav = () => {
 
 				<nav className={styles.pages}>
 					<NavLink
-						to="/"
+						to={ROUTES.CATEGORIES}
 						className={({ isActive }) =>
 							`${styles.category} ${isActive ? styles.active : ''}`
 						}
@@ -24,7 +25,7 @@ export const HeaderNav = () => {
 						Category
 					</NavLink>
 					<NavLink
-						to="/images"
+						to={ROUTES.IMAGES}
 						className={({ isActive }) =>
 							`${styles.images} ${isActive ? styles.active : ''}`
 						}
@@ -33,7 +34,7 @@ export const HeaderNav = () => {
 						Images
 					</NavLink>
 					<NavLink
-						to="/favourites"
+						to={ROUTES.FAVOURITES}
 						className={({ isActive }) =>
 							`${styles.favourites} ${isActive ? styles.active : ''}`
 						}
