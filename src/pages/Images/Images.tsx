@@ -1,5 +1,4 @@
 import styles from './Images.module.css';
-import { useSearchParams } from 'react-router-dom';
 
 import { Pagination } from './components/Pagination/Pagination';
 import { Sorting } from './components/Sorting/Sorting';
@@ -7,45 +6,16 @@ import { usePhotos } from '../../hooks/usePhotos';
 import { PhotoCard } from '../../components/PhotoCard/PhotoCard';
 import { Image } from './components/Image/Image';
 import { usePhotoViewer } from '../../hooks/usePhotoViewer';
-import { useState } from 'react';
-import { UnsplashPhoto } from '../../types/unsplashPhoto';
+import { useSearchParamsHandler } from '../../hooks/useSearchParamsHandler';
+import { useFavourites } from '../../hooks/useFavourites';
 
 export const Images = () => {
-	const [searchParams, setSearchParams] = useSearchParams();
-	const [favouriteIds, setFavouriteIds] = useState<string[]>(() => {
-		const stored = JSON.parse(sessionStorage.getItem('favourites') || '[]');
-		return stored.map((p: UnsplashPhoto) => p.id);
-	});
-
-	const category = searchParams.get('category') || '';
-	const page = parseInt(searchParams.get('page') || '1');
-	const sortParamRaw = searchParams.get('sort');
-	const sort: 'relevant' | 'latest' = sortParamRaw === 'latest' ? 'latest' : 'relevant';
-	const search = searchParams.get('search') || '';
-
-	const { photos, totalPages, isPageOutOfBounds, setIsPageOutOfBounds, isLoading } =
-		usePhotos(category, page, sort, search);
-
+	const { category, page, sort, search, handleSortChange, handlePageChange } =
+		useSearchParamsHandler();
+	const { favouriteIds, handleFavouriteChange } = useFavourites();
+	const { photos, totalPages, isLoading } = usePhotos(category, page, sort, search);
 	const { isOpen, selectedPhoto, openPhoto, closePhoto, showPrev, showNext } =
 		usePhotoViewer(photos);
-
-	const handleSortChange = (newSort: string) => {
-		setSearchParams({ category, page: '1', sort: newSort });
-	};
-
-	const handlePageChange = (newPage: number) => {
-		if (newPage <= totalPages && newPage >= 1) {
-			setSearchParams({ category, page: newPage.toString() });
-		} else {
-			setIsPageOutOfBounds(true);
-		}
-	};
-
-	const handleFavouriteChange = (photoId: string, isFavourite: boolean) => {
-		setFavouriteIds((prev) =>
-			isFavourite ? [...prev, photoId] : prev.filter((id) => id !== photoId),
-		);
-	};
 
 	return (
 		<div className={styles.container}>
@@ -99,7 +69,7 @@ export const Images = () => {
 			{photos.length !== 0 && (
 				<Pagination
 					page={page}
-					handlePageChange={handlePageChange}
+					handlePageChange={(newPage) => handlePageChange(newPage, totalPages)}
 					totalPages={totalPages}
 				/>
 			)}

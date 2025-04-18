@@ -3,6 +3,8 @@ import { useEffect, useState } from 'react';
 import { categories } from '../../constants/categories';
 import { fetchPhotosByCategory } from '../../api/unsplash';
 import { useNavigate } from 'react-router-dom';
+import { ROUTES } from '../../constants/routes';
+import { SEARCH_PARAMS } from '../../constants/searchParams';
 
 type CategoryPreview = {
 	category: string;
@@ -41,7 +43,7 @@ export const Category = () => {
 	}, []);
 
 	const handleClick = (category: string) => {
-		navigate(`/images?category=${category}&page=1`);
+		navigate(`${ROUTES.IMAGES}?category=${category}&${SEARCH_PARAMS.PAGE}=1`);
 	};
 
 	return (
@@ -66,7 +68,7 @@ export const Category = () => {
 									className={styles.imageCategory}
 								/>
 							) : (
-								<div>Нет фото</div>
+								<div className={styles.placeholder}>No image</div>
 							)}
 							<div className={styles.textCategory}>{category}</div>
 						</div>

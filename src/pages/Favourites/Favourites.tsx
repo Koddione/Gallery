@@ -1,16 +1,16 @@
+import styles from './Favourites.module.css';
 import { useEffect, useState } from 'react';
 import { UnsplashPhoto } from '../../types/unsplashPhoto';
-import styles from './Favourites.module.css';
 import { PhotoCard } from '../../components/PhotoCard/PhotoCard';
 import { usePhotoViewer } from '../../hooks/usePhotoViewer';
 import { Image } from '../Images/components/Image/Image';
+import { getFavourites, saveFavourites } from '../../utils/favouritesStorage';
 
 export const Favourites = () => {
 	const [favourites, setFavourites] = useState<UnsplashPhoto[]>([]);
 
 	useEffect(() => {
-		const favs = JSON.parse(sessionStorage.getItem('favourites') || '[]');
-		setFavourites(favs);
+		setFavourites(getFavourites());
 	}, []);
 
 	const handleFavouriteChange = (photoId: string, isFavourite: boolean) => {
@@ -18,7 +18,7 @@ export const Favourites = () => {
 
 		const updated = favourites.filter((fav) => fav.id !== photoId);
 		setFavourites(updated);
-		sessionStorage.setItem('favourites', JSON.stringify(updated));
+		saveFavourites(updated);
 	};
 
 	const { isOpen, selectedPhoto, openPhoto, closePhoto, showPrev, showNext } =
@@ -28,16 +28,18 @@ export const Favourites = () => {
 		? favourites.some((fav) => fav.id === selectedPhoto.id)
 		: false;
 
+	const isEmpty = favourites.length === 0;
+
 	return (
 		<div className={styles.container}>
-			{favourites.length !== 0 && (
+			{!isEmpty && (
 				<h2>
 					<span>Saved by you</span>
 					<br />
 					Your favorites list
 				</h2>
 			)}
-			{favourites.length === 0 ? (
+			{isEmpty ? (
 				<p className="notFound">
 					Your <span> Favourites </span>List <br /> Is Empty
 				</p>
