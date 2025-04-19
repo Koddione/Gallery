@@ -16,7 +16,10 @@
 	font-size: 17.54px;
 
 	font-weight: 500;
-	max-width: 197px;
+	max-width: 200px;
+}
+.full p {
+	max-width: 400px;
 }
 .save {
 	border: none;

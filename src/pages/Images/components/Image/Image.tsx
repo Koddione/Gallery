@@ -57,6 +57,7 @@ export const Image = ({
 								photo={photo}
 								isFavourite={isFavourite}
 								onFavouriteChange={onFavouriteChange}
+								isFullView={true}
 							/>
 						</div>
 					</div>
