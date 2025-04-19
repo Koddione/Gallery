@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { NavLink, useLocation } from 'react-router';
 import styles from './HeaderNav.module.css';
 import { LogoModsen } from '../../../LogoModsen/LogoModsen';
@@ -7,19 +8,32 @@ import { FavouritesLogo } from '../../../FavouritesLogo/FavouritesLogo';
 import { ROUTES } from '../../../../constants/routes';
 
 export const HeaderNav = () => {
+	const [isMenuOpen, setIsMenuOpen] = useState(false);
 	const location = useLocation();
 	const isFavouritesPage = location.pathname === ROUTES.FAVOURITES;
+
 	return (
-		<div className={styles.header}>
+		<div className={`${styles.header} ${isMenuOpen ? styles.open : ''}`}>
 			<div className={styles.info}>
 				<LogoModsen />
 
-				<nav className={styles.pages}>
+				<button
+					className={`${styles.burger} ${isMenuOpen ? styles.open : ''}`}
+					onClick={() => setIsMenuOpen((prev) => !prev)}
+					aria-label="Menu toggle"
+				>
+					<span />
+					<span />
+					<span />
+				</button>
+
+				<nav className={`${styles.pages} ${isMenuOpen ? styles.show : ''}`}>
 					<NavLink
 						to={ROUTES.CATEGORIES}
 						className={({ isActive }) =>
 							`${styles.category} ${isActive ? styles.active : ''}`
 						}
+						onClick={() => setIsMenuOpen(false)}
 					>
 						<CategoryLogo />
 						Category
@@ -29,6 +43,7 @@ export const HeaderNav = () => {
 						className={({ isActive }) =>
 							`${styles.images} ${isActive ? styles.active : ''}`
 						}
+						onClick={() => setIsMenuOpen(false)}
 					>
 						<ImagesLogo />
 						Images
@@ -38,6 +53,7 @@ export const HeaderNav = () => {
 						className={({ isActive }) =>
 							`${styles.favourites} ${isActive ? styles.active : ''}`
 						}
+						onClick={() => setIsMenuOpen(false)}
 					>
 						<FavouritesLogo filled={isFavouritesPage} />
 						Favourites

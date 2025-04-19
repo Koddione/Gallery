@@ -77,4 +77,14 @@ a:hover {
 	100% {
 		transform: rotate(360deg);
 	}
+}с
+<<<<<<< HEAD
+=======
+
+@media (max-width: 704px) {
+	.notFound {
+		font-size: 32px;
+		max-width: 390px;
+	}
 }
+>>>>>>> develop

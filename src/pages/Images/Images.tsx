@@ -36,7 +36,10 @@ export const Images = () => {
 						<div
 							key={photo.id}
 							className={styles.photo}
-							onClick={() => openPhoto(index)}
+							onClick={(e) => {
+								if ((e.target as HTMLElement).closest('button')) return;
+								openPhoto(index);
+							}}
 						>
 							<img
 								className={styles.image}

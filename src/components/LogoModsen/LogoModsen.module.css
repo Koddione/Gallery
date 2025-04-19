@@ -1,18 +1,21 @@
 .logo {
 	position: relative;
 	display: flex;
+	z-index: 1;
 }
 
 .Modsen {
 	position: relative;
 	display: flex;
 	gap: 2px;
+	z-index: 1;
 }
 .orangeCircl {
 	position: absolute;
 	top: -10px;
 	left: 23px;
 	transition: transform 1s ease;
+	z-index: 1;
 }
 .logo:hover .orangeCircl {
 	transform: rotate(360deg);
@@ -28,4 +31,5 @@
 	left: 173px;
 	top: 13px;
 	color: #f17900;
+	z-index: 1;
 }

@@ -9,9 +9,10 @@
 	justify-content: center;
 	align-items: center;
 	backdrop-filter: blur(4px);
+	z-index: 9998;
 }
 .wrapper {
-	z-index: 100;
+	z-index: 9999;
 	position: fixed;
 	top: 50%;
 	left: 50%;
@@ -68,4 +69,35 @@
 .left:active,
 .right:active {
 	opacity: 0.7;
+}
+@media (max-width: 779px) {
+	.container {
+		position: relative;
+	}
+	.left,
+	.right {
+		position: absolute;
+		top: 105%;
+	}
+	.right {
+		right: 40%;
+	}
+	.left {
+		left: 40%;
+	}
+	.close {
+		top: 10px;
+		right: 10px;
+		background-color: rgba(0, 0, 0, 0.39);
+		border-radius: 50%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+}
+@media (max-width: 625px) {
+	.photo {
+		max-width: 380px;
+		max-height: 300px;
+	}
 }

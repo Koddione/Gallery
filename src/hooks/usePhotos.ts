@@ -32,6 +32,7 @@ export const usePhotos = (
 				search,
 			);
 			if (page > response.total_pages) {
+				setPhotos([]);
 				setIsLoading(false);
 				return;
 			}
