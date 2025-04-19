@@ -69,3 +69,29 @@
 .instagram {
 	position: relative;
 }
+@media (max-width: 1030px) {
+	.company a,
+	.help a,
+	.FAQ a,
+	.resources a {
+		display: none;
+		margin-bottom: 20px;
+	}
+	.container {
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+	}
+	.info,
+	.company,
+	.help,
+	.FAQ,
+	.resources {
+		margin-bottom: 34px;
+		font-size: 20px;
+	}
+	.modsenGallery {
+		font-size: 16px;
+		margin-left: 20px;
+	}
+}

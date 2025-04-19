@@ -33,6 +33,7 @@
 	border-radius: 8px;
 	border: none;
 	width: 100%;
+	margin: 0 20px;
 }
 .input:focus {
 	outline: none;
@@ -40,6 +41,7 @@
 }
 .inputWrapper {
 	position: relative;
+
 	margin-bottom: 65px;
 	width: 100%;
 	max-width: 808px;
@@ -50,11 +52,29 @@
 	position: absolute;
 	width: 17px;
 	height: 18px;
-	left: 25px;
-	top: 18px;
+	left: 35px;
+	top: 19px;
 	cursor: pointer;
 	transition: transform 0.2s ease;
 }
 .searchIco:hover {
 	transform: scale(1.25);
+}
+
+@media (max-width: 726px) {
+	.h1 {
+		font-size: 48px;
+	}
+	.searchIco {
+		left: 92%;
+	}
+	.input {
+		padding-left: 16px;
+	}
+}
+
+@media (max-width: 599px) {
+	.searchIco {
+		left: 88%;
+	}
 }

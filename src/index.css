@@ -78,3 +78,10 @@ a:hover {
 		transform: rotate(360deg);
 	}
 }
+
+@media (max-width: 704px) {
+	.notFound {
+		font-size: 32px;
+		max-width: 390px;
+	}
+}
