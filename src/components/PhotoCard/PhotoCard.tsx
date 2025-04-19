@@ -22,7 +22,7 @@ export const PhotoCard = ({
 		const newState = toggleFavourite(photo);
 		onFavouriteChange(newState);
 	};
-	const name = photo.name || photo.alt_description || 'Без названия';
+	const name = photo.name || photo.alt_description || 'No name';
 	const displayText = isFullView ? truncateText(name, 84) : truncateText(name, 30);
 
 	return (
@@ -30,7 +30,7 @@ export const PhotoCard = ({
 			<p>{displayText}</p>
 			<button
 				className={`${styles.save} ${isFavourite ? styles.filled : ''}`}
-				onClick={handleSave}
+				onPointerDown={handleSave}
 			>
 				<FavouritesLogo filled={isFavourite} />
 			</button>
