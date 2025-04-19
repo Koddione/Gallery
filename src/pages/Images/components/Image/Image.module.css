@@ -8,7 +8,6 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	/* z-index: 99; */
 	backdrop-filter: blur(4px);
 }
 .wrapper {
@@ -17,7 +16,6 @@
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
-	/* color: white; */
 }
 .container {
 	display: flex;

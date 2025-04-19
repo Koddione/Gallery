@@ -37,50 +37,7 @@
 		-1px 1px 0 black,
 		1px 1px 0 black;
 }
-.loading {
-	text-align: center;
-	font-size: 30px;
-	color: #777;
-	animation: pulse 1s infinite ease-in-out;
-}
 
-@keyframes pulse {
-	0% {
-		opacity: 0.3;
-	}
-	50% {
-		opacity: 1;
-	}
-	100% {
-		opacity: 0.3;
-	}
-}
-.spinnerWrapper {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	flex-direction: column;
-	margin: 0 auto;
-}
-
-.spinner {
-	width: 40px;
-	height: 40px;
-	border: 4px solid rgba(0, 0, 0, 0.1);
-	border-top: 4px solid #333;
-	border-radius: 50%;
-	animation: spin 1s linear infinite;
-	margin-bottom: 20px;
-}
-
-@keyframes spin {
-	0% {
-		transform: rotate(0deg);
-	}
-	100% {
-		transform: rotate(360deg);
-	}
-}
 .placeholder {
 	display: flex;
 	align-items: center;
