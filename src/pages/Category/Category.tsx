@@ -50,9 +50,9 @@ export const Category = () => {
 		<>
 			<div className={styles.container}>
 				{isLoading ? (
-					<div className={styles.spinnerWrapper}>
-						<div className={styles.spinner}></div>
-						<p className={styles.loading}>Uploading images...</p>
+					<div className="spinnerWrapper">
+						<div className="spinner"></div>
+						<p className="loading">Uploading images...</p>
 					</div>
 				) : (
 					categoryPreviews.map(({ category, imageUrl }) => (

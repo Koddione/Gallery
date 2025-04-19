@@ -22,9 +22,9 @@ export const Images = () => {
 			{photos.length !== 0 && <Sorting onSortChange={handleSortChange} />}
 			<div className={styles.photosFromCategory}>
 				{isLoading ? (
-					<div className={styles.spinnerWrapper}>
-						<div className={styles.spinner}></div>
-						<p className={styles.loading}>Uploading images...</p>
+					<div className="spinnerWrapper">
+						<div className="spinner"></div>
+						<p className="loading">Uploading images...</p>
 					</div>
 				) : photos.length === 0 ? (
 					<p className="notFound">
