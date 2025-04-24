@@ -1,32 +1,42 @@
-import React, { Component, ReactNode } from 'react';
+import { Component, ReactNode } from 'react';
 
 interface Props {
-	children: ReactNode;
+  children: ReactNode;
 }
 
 interface State {
-	hasError: boolean;
+  hasError: boolean;
+  errorMessage: string | null;
 }
 
 export class ErrorBoundary extends Component<Props, State> {
-	constructor(props: Props) {
-		super(props);
-		this.state = { hasError: false };
-	}
+  constructor(props: Props) {
+    super(props);
+    this.state = {
+      hasError: false,
+      errorMessage: null,
+    };
+  }
 
-	static getDerivedStateFromError() {
-		return { hasError: true };
-	}
+  static getDerivedStateFromError(error: Error) {
+    return {
+      hasError: true,
+      errorMessage: error.message,
+    };
+  }
 
-	componentDidCatch(error: Error, errorInfo: React.ErrorInfo) {
-		console.error('Caught by ErrorBoundary:', error, errorInfo);
-	}
+  render() {
+    const { hasError, errorMessage } = this.state;
 
-	render() {
-		if (this.state.hasError) {
-			return <h2>Error. Please try again</h2>;
-		}
+    if (hasError) {
+      return (
+        <div style={{ padding: '20px', color: 'red', textAlign: 'center' }}>
+          <h2>Something went wrong.</h2>
+          <p>{errorMessage}</p>
+        </div>
+      );
+    }
 
-		return this.props.children;
-	}
+    return this.props.children;
+  }
 }

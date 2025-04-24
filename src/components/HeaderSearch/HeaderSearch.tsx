@@ -53,7 +53,7 @@ export const HeaderSearch = () => {
             placeholder="Search images..."
             className={styles.input}
           />
-          <img src={searchIco} alt="поиск" className={styles.searchIco} />
+          <img src={searchIco} alt="search" className={styles.searchIco} />
         </div>
       )}
     </div>

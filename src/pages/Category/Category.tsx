@@ -10,6 +10,7 @@ import styles from './Category.module.css';
 type CategoryPreview = {
   category: string;
   imageUrl: string;
+  error?: string;
 };
 
 export const Category = () => {
@@ -27,11 +28,11 @@ export const Category = () => {
               category,
               imageUrl: photos.results[0]?.urls?.small || '',
             };
-          } catch (error) {
-            console.error(`Ошибка загрузки превью для "${category}":`, error);
+          } catch (_error) {
             return {
               category,
               imageUrl: '',
+              error: `Error loading the preview for "${category}"`,
             };
           }
         }),
@@ -56,7 +57,7 @@ export const Category = () => {
             <p className="loading">Uploading images...</p>
           </div>
         ) : (
-          categoryPreviews.map(({ category, imageUrl }) => (
+          categoryPreviews.map(({ category, imageUrl, error }) => (
             <div
               className={styles.category}
               key={category}
@@ -65,7 +66,7 @@ export const Category = () => {
               {imageUrl ? (
                 <img src={imageUrl} alt={category} className={styles.imageCategory} />
               ) : (
-                <div className={styles.placeholder}>No image</div>
+                <div className={styles.placeholder}>{error || 'No image'}</div>
               )}
               <div className={styles.textCategory}>{category}</div>
             </div>
