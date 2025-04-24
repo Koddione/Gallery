@@ -1,71 +1,72 @@
 import { useEffect, useState } from 'react';
-import { Left } from '../../../../components/left';
-import { Right } from '../../../../components/right';
+
+import { Left } from '../../../../assets/icons/LeftArrow';
+import { Right } from '../../../../assets/icons/RightArrow';
 import styles from './Pagination.module.css';
 
 interface PaginationProps {
-	page: number;
-	handlePageChange: (page: number) => void;
-	totalPages: number;
+  page: number;
+  handlePageChange: (page: number) => void;
+  totalPages: number;
 }
 
 export const Pagination: React.FC<PaginationProps> = ({
-	page,
-	handlePageChange,
-	totalPages,
+  page,
+  handlePageChange,
+  totalPages,
 }) => {
-	const [pageRange, setPageRange] = useState<number[]>([]);
-	const pagesToShow = 4;
+  const [pageRange, setPageRange] = useState<number[]>([]);
+  const pagesToShow = 4;
 
-	useEffect(() => {
-		const startPage = Math.floor((page - 1) / pagesToShow) * pagesToShow + 1;
-		const endPage = Math.min(startPage + pagesToShow - 1, totalPages);
-		setPageRange(
-			Array.from({ length: endPage - startPage + 1 }, (_, i) => startPage + i),
-		);
-	}, [page, totalPages]);
+  useEffect(() => {
+    const startPage = Math.floor((page - 1) / pagesToShow) * pagesToShow + 1;
+    const endPage = Math.min(startPage + pagesToShow - 1, totalPages);
+    setPageRange(
+      Array.from({ length: endPage - startPage + 1 }, (_, i) => startPage + i),
+    );
+  }, [page, totalPages]);
 
-	const goToPage = (newPage: number) => {
-		handlePageChange(newPage);
-	};
+  const goToPage = (newPage: number) => {
+    handlePageChange(newPage);
+  };
 
-	const handleNextRange = () => {
-		const nextStart = pageRange[pageRange.length - 1] + 1;
-		if (nextStart <= totalPages) {
-			setPageRange(Array.from({ length: pagesToShow }, (_, i) => nextStart + i));
-		}
-	};
+  const handleNextRange = () => {
+    const nextStart = pageRange[pageRange.length - 1] + 1;
+    if (nextStart <= totalPages) {
+      setPageRange(Array.from({ length: pagesToShow }, (_, i) => nextStart + i));
+    }
+  };
 
-	const handlePrevRange = () => {
-		const prevStart = pageRange[0] - pagesToShow;
-		if (prevStart >= 1) {
-			setPageRange(Array.from({ length: pagesToShow }, (_, i) => prevStart + i));
-		}
-	};
+  const handlePrevRange = () => {
+    const prevStart = pageRange[0] - pagesToShow;
+    if (prevStart >= 1) {
+      setPageRange(Array.from({ length: pagesToShow }, (_, i) => prevStart + i));
+    }
+  };
 
-	return (
-		<div className={styles.pagination}>
-			{pageRange[0] > 1 && (
-				<button className={styles.left} onClick={handlePrevRange}>
-					<Left />
-				</button>
-			)}
-			<div className={styles.pages}>
-				{pageRange.map((p) => (
-					<button
-						key={p}
-						onClick={() => goToPage(p)}
-						className={`${styles.pageButton} ${p === page ? styles.active : ''}`}
-					>
-						{p}
-					</button>
-				))}
-			</div>
-			{pageRange[pageRange.length - 1] < totalPages && (
-				<button className={styles.right} onClick={handleNextRange}>
-					<Right />
-				</button>
-			)}
-		</div>
-	);
+  return (
+    <div className={styles.pagination}>
+      {pageRange[0] > 1 && (
+        <button className={styles.left} onClick={handlePrevRange}>
+          <Left />
+        </button>
+      )}
+      <div className={styles.pages}>
+        {pageRange.map((p) => (
+          <button
+            key={p}
+            onClick={() => goToPage(p)}
+            className={`${styles.pageButton} ${p === page ? styles.active : ''}`}
+          >
+            {p}
+          </button>
+        ))}
+      </div>
+      {pageRange[pageRange.length - 1] < totalPages && (
+        <button className={styles.right} onClick={handleNextRange}>
+          <Right />
+        </button>
+      )}
+    </div>
+  );
 };
