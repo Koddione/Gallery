@@ -1,6 +1,6 @@
+import { BottomArrow } from '@assets/icons/BottomArrow';
 import { useState } from 'react';
 
-import { BottomArrow } from '../../../../assets/icons/BottomArrow';
 import styles from './Sorting.module.css';
 
 interface SortingProps {

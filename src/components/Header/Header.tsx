@@ -1,15 +1,16 @@
-import { HeaderNav } from './components/HeaderNav/HeaderNav';
-import { HeaderSearch } from './components/HeaderSearch/HeaderSearch';
+import { HeaderNav } from '@components/HeaderNav/HeaderNav';
+import { HeaderSearch } from '@components/HeaderSearch/HeaderSearch';
+import { useHeaderLogic } from '@hooks/useHeaderLogic';
+
 import styles from './Header.module.css';
-import { useHeaderLogic } from '../../hooks/useHeaderLogic';
 
 export const Header = () => {
-	const { isFavouritePage, isNotFoundPage } = useHeaderLogic();
+  const { isFavouritePage, isNotFoundPage } = useHeaderLogic();
 
-	return (
-		<header className={styles.header}>
-			<HeaderNav />
-			{!isFavouritePage && !isNotFoundPage && <HeaderSearch />}
-		</header>
-	);
+  return (
+    <header className={styles.header}>
+      <HeaderNav />
+      {!isFavouritePage && !isNotFoundPage && <HeaderSearch />}
+    </header>
+  );
 };

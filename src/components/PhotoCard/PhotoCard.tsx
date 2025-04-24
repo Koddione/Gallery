@@ -1,7 +1,8 @@
-import { FavouritesLogo } from '../../assets/icons/FavouritesLogo';
-import { UnsplashPhoto } from '../../types/unsplashPhoto';
-import { toggleFavourite } from '../../utils/favouritesStorage';
-import { truncateText } from '../../utils/truncateText';
+import { FavouritesLogo } from '@assets/icons/FavouritesLogo';
+import { UnsplashPhoto } from '@customTypes/unsplashPhoto';
+import { toggleFavourite } from '@utils/favouritesStorage';
+import { truncateText } from '@utils/truncateText';
+
 import styles from './PhotoCard.module.css';
 
 interface PhotoCardProps {

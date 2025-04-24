@@ -1,8 +1,9 @@
-import { CloseIco } from '../../../../assets/icons/CloseIco';
-import { Left } from '../../../../assets/icons/LeftArrow';
-import { Right } from '../../../../assets/icons/RightArrow';
-import { PhotoCard } from '../../../../components/PhotoCard/PhotoCard';
-import { UnsplashPhoto } from '../../../../types/unsplashPhoto';
+import { CloseIco } from '@assets/icons/CloseIco';
+import { Left } from '@assets/icons/LeftArrow';
+import { Right } from '@assets/icons/RightArrow';
+import { PhotoCard } from '@components/PhotoCard/PhotoCard';
+import { UnsplashPhoto } from '@customTypes/unsplashPhoto';
+
 import styles from './Image.module.css';
 
 interface ImageProps {

@@ -1,5 +1,6 @@
-import { ModsenLogoM } from '../../assets/icons/modsenLogoIcons/ModsenLogoM';
-import { ModsenLogoRest } from '../../assets/icons/modsenLogoIcons/ModsenLogoRest';
+import { ModsenLogoM } from '@assets/icons/modsenLogoIcons/ModsenLogoM';
+import { ModsenLogoRest } from '@assets/icons/modsenLogoIcons/ModsenLogoRest';
+
 import styles from './LogoModsen.module.css';
 
 export const LogoModsen = () => {

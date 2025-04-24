@@ -1,16 +1,18 @@
+import './index.css';
+
+import { ErrorBoundary } from '@components/ErrorBoudary.tsx';
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
-import './index.css';
-import App from './App.tsx';
 import { BrowserRouter } from 'react-router-dom';
-import { ErrorBoundary } from './components/ErrorBoudary.tsx';
+
+import App from './App.tsx';
 
 createRoot(document.getElementById('root')!).render(
-	<StrictMode>
-		<ErrorBoundary>
-			<BrowserRouter>
-				<App />
-			</BrowserRouter>
-		</ErrorBoundary>
-	</StrictMode>,
+  <StrictMode>
+    <ErrorBoundary>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </ErrorBoundary>
+  </StrictMode>,
 );

@@ -1,8 +1,9 @@
-import { FacebookLogo } from '../../assets/icons/FacebookLogo';
-import { GitHubLogo } from '../../assets/icons/GitHubLogo';
-import { InstagramLogo } from '../../assets/icons/InstagramLogo';
-import { TwitterLogo } from '../../assets/icons/TwitterLogo';
-import { LogoModsen } from '../LogoModsen/LogoModsen';
+import { FacebookLogo } from '@assets/icons/FacebookLogo';
+import { GitHubLogo } from '@assets/icons/GitHubLogo';
+import { InstagramLogo } from '@assets/icons/InstagramLogo';
+import { TwitterLogo } from '@assets/icons/TwitterLogo';
+import { LogoModsen } from '@components/LogoModsen/LogoModsen';
+
 import styles from './Footer.module.css';
 
 export const Footer = () => {

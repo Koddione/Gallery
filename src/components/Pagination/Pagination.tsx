@@ -1,7 +1,7 @@
+import { Left } from '@assets/icons/LeftArrow';
+import { Right } from '@assets/icons/RightArrow';
 import { useEffect, useState } from 'react';
 
-import { Left } from '../../../../assets/icons/LeftArrow';
-import { Right } from '../../../../assets/icons/RightArrow';
 import styles from './Pagination.module.css';
 
 interface PaginationProps {

@@ -1,11 +1,11 @@
+import { CategoryLogo } from '@assets/icons/CategoryLogo';
+import { FavouritesLogo } from '@assets/icons/FavouritesLogo';
+import { ImagesLogo } from '@assets/icons/ImagesLogo';
+import { LogoModsen } from '@components/LogoModsen/LogoModsen';
+import { ROUTES } from '@constants/routes';
 import { useState } from 'react';
 import { NavLink, useLocation } from 'react-router';
 
-import { CategoryLogo } from '../../../../assets/icons/CategoryLogo';
-import { FavouritesLogo } from '../../../../assets/icons/FavouritesLogo';
-import { ImagesLogo } from '../../../../assets/icons/ImagesLogo';
-import { ROUTES } from '../../../../constants/routes';
-import { LogoModsen } from '../../../LogoModsen/LogoModsen';
 import styles from './HeaderNav.module.css';
 
 export const HeaderNav = () => {

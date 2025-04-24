@@ -1,9 +1,9 @@
+import searchIco from '@assets/icons/seatchIco.png';
+import { ROUTES } from '@constants/routes';
+import { SEARCH_PARAMS } from '@constants/searchParams';
 import { useEffect, useRef, useState } from 'react';
 import { useLocation, useSearchParams } from 'react-router';
 
-import searchIco from '../../../../assets/icons/seatchIco.png';
-import { ROUTES } from '../../../../constants/routes';
-import { SEARCH_PARAMS } from '../../../../constants/searchParams';
 import styles from './HeaderSearch.module.css';
 
 export const HeaderSearch = () => {
