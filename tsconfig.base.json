@@ -24,7 +24,8 @@
       "@utils/*": ["src/utils/*"],
       "@hooks/*": ["src/hooks/*"],
       "@customTypes/*": ["src/types/*"],
-      "@api/*": ["src/api/*"]
+      "@api/*": ["src/api/*"],
+      "@theme/*": ["src/theme/*"]
     }
   }
 }

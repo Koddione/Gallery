@@ -1,0 +1,59 @@
+:root {
+  --color-primary: rgba(241, 121, 0, 1);
+  --color-light-primary: rgba(224, 164, 73, 1);
+  --color-light-gray: rgba(249, 249, 249, 1);
+  --color-gray: rgba(196, 196, 196, 1);
+  --color-dark-gray: rgba(119, 119, 119, 1);
+  --color-border: rgba(240, 241, 241, 1);
+  --color-error: rgba(241, 121, 0, 1);
+  --color-white: rgba(255, 255, 255, 1);
+  --color-white-muted: rgba(255, 255, 255, 0.6);
+  --color-black: rgba(0, 0, 0, 1);
+  --color-black-muted: rgba(0, 0, 0, 0.1);
+  --color-background: rgba(0, 0, 0, 0.288);
+  --color-gradient: linear-gradient(
+    90deg,
+    rgba(52, 51, 51, 0.96) 38.05%,
+    rgba(72, 72, 72, 1) 69.22%,
+    rgba(40, 40, 40, 1) 98.98%
+  );
+
+  --text-shadow:
+    -1px -1px 0 rgba(0, 0, 0, 1), 1px -1px 0 rgba(0, 0, 0, 1),
+    -1px 1px 0 rgba(0, 0, 0, 1), 1px 1px 0 rgba(0, 0, 0, 1);
+  --background-shadow: 0px 2px 5px rgb(0, 0, 0);
+  --font-main: 'Lexend Deca', sans-serif;
+  --font-alt: 'Montserrat', sans-serif;
+  --font-heading: 'Roboto', sans-serif;
+  --font-error: 'Signika', sans-serif;
+  --font-alumni: 'Alumni Sans', sans-serif;
+
+  --font-size-base: 16px;
+  --font-size-md: 17.54px;
+  --font-size-lg: 20px;
+  --font-size-lg-alt: 24px;
+  --font-size-xl: 32px;
+  --font-size-xxl: 40px;
+  --font-size-heading-lg: 48px;
+  --font-size-error: 64px;
+  --font-size-xxxl: 96px;
+  --font-size-error-large: 128px;
+
+  --radius-sm: 8px;
+  --radius-lg: 20px;
+  --radius-full: 50%;
+
+  --space-xxs: 2px;
+  --space-xs: 5px;
+  --space-sm: 10px;
+  --space-md: 20px;
+  --space-lg: 25px;
+  --space-xl: 40px;
+  --space-xxl: 65px;
+  --space-xxxl: 85px;
+
+  --transition-fast: 0.2s ease;
+  --transition-medium: 0.3s ease;
+  --transition-slow: 0.4s ease;
+  --transition-long: 1s ease;
+}

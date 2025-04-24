@@ -1,17 +1,17 @@
 .container {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 .error {
-	text-align: center;
-	font-size: 48px;
-	color: rgba(241, 121, 0, 1);
-	margin-top: 85px;
-	font-family: 'Signika', sans-serif;
-	font-weight: 400;
+  text-align: center;
+  font-size: var(--font-size-heading-lg);
+  color: var(--color-primary);
+  margin-top: var(--space-xxxl);
+  font-family: var(--font-error);
+  font-weight: 400;
 }
 .error span {
-	font-size: 128px;
+  font-size: var(--font-size-error-large);
 }

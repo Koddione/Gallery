@@ -1,52 +1,51 @@
 .sorting {
-	margin: 25px 0;
-	display: flex;
-	gap: 11px;
-	justify-content: flex-end;
-	align-items: center;
+  margin: var(--space-lg) 0;
+  display: flex;
+  gap: var(--space-sm);
+  justify-content: flex-end;
+  align-items: center;
 }
 .sorting p {
-	font-family: 'Lexend Deca', sans-serif;
-	font-size: 17.54px;
+  font-family: var(--font-main);
+  font-size: var(--font-size-md);
 }
 .select {
-	appearance: none;
-	-webkit-appearance: none;
-	-moz-appearance: none;
-	color: rgba(196, 196, 196, 1);
-	font-family: 'Montserrat';
-	font-size: 16px;
-	border-radius: 20px;
-	padding: 10px 0;
-	padding-left: 16px;
-	padding-right: 54px;
-	background-size: 12px;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  color: var(--color-gray);
+  font-family: 'Montserrat';
+  font-size: var(--font-size-base);
+  border-radius: var(--radius-lg);
+  padding: var(--space-sm) 0;
+  padding-left: var(--space-md);
+  padding-right: var(--space-xxl);
 }
 
 .selectWrapper {
-	position: relative;
+  position: relative;
 }
 .selectWrapper:focus-within .arrow {
-	color: #000;
+  color: var(--color-black);
 }
 .select:focus {
-	color: #000;
+  color: var(--color-black);
 }
 .arrow {
-	position: absolute;
-	top: 16px;
-	right: 20px;
-	color: rgba(196, 196, 196, 1);
-	pointer-events: none;
-	transition: transform 0.3s ease;
+  position: absolute;
+  top: 16px;
+  right: 20px;
+  color: var(--color-gray);
+  pointer-events: none;
+  transition: transform var(--transition-medium);
 }
 .rotated {
-	transform: rotate(180deg);
-	transition: transform 0.3s ease;
+  transform: rotate(180deg);
+  transition: transform var(--transition-medium);
 }
 
 @media (max-width: 927px) {
-	.sorting {
-		justify-content: center;
-	}
+  .sorting {
+    justify-content: center;
+  }
 }

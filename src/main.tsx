@@ -1,4 +1,5 @@
 import './index.css';
+import '@theme/theme.css';
 
 import { ErrorBoundary } from '@components/ErrorBoudary.tsx';
 import { StrictMode } from 'react';

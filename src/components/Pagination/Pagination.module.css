@@ -1,59 +1,59 @@
 .pagination {
-	display: flex;
-	justify-content: flex-end;
-	align-items: center;
-	gap: 10px;
-	padding: 20px;
-	font-family: 'Lexend Deca', sans-serif;
-	font-weight: 300;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-md);
+  font-family: var(--font-main);
+  font-weight: 300;
 }
 
 .pages {
-	display: flex;
-	justify-content: space-between;
-	width: 182px;
+  display: flex;
+  justify-content: space-between;
+  width: 182px;
 }
 
 .left,
 .right {
-	cursor: pointer;
-	border: none;
-	background: none;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	padding: 5px;
-	transition:
-		transform 0.2s ease,
-		color 0.3s ease;
+  cursor: pointer;
+  border: none;
+  background: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-xs);
+  transition:
+    transform var(--transition-fast),
+    color var(-- --transition-medium);
 }
 
 .left:hover,
 .right:hover {
-	transform: scale(1.1);
-	color: rgba(241, 121, 0, 1);
+  transform: scale(1.1);
+  color: var(--color-primary);
 }
 .pageButton {
-	font-size: 20px;
-	border: none;
-	background: none;
-	font-family: inherit;
-	padding: 4px 10px;
-	border-radius: 8px;
-	cursor: pointer;
-	transition:
-		color 0.4s ease,
-		background-color 0.4s ease,
-		font-weight 0.4s ease;
+  font-size: var(--font-size-lg);
+  border: none;
+  background: none;
+  font-family: inherit;
+  padding: var(--space-xs) var(--space-sm);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition:
+    color var(--transition-slow),
+    background-color var(--transition-slow),
+    font-weight var(--transition-slow);
 }
 .active {
-	background-color: rgba(241, 121, 0, 1);
-	color: white;
-	font-weight: 600;
-	cursor: auto;
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  font-weight: 600;
+  cursor: auto;
 }
 .pageButton:hover {
-	background-color: rgba(241, 121, 0, 1);
-	color: white;
-	font-weight: 600;
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  font-weight: 600;
 }

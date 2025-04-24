@@ -8,32 +8,28 @@
 }
 
 .h1 {
-  margin-top: 65px;
-  margin-bottom: 87px;
-  font-family: 'Roboto', sans-serif;
+  margin-top: var(--space-xxl);
+  margin-bottom: var(--space-xxl);
+  font-family: var(--font-heading);
   font-weight: 700;
-  font-size: 96px;
-  color: #ffff;
+  font-size: var(--font-size-xxxl);
+  color: var(--color-white);
   max-width: 700px;
   text-align: center;
-  text-shadow:
-    -1px -1px 0 black,
-    1px -1px 0 black,
-    -1px 1px 0 black,
-    1px 1px 0 black;
+  text-shadow: var(--text-shadow);
 }
 .h1 span {
-  color: rgba(241, 121, 0, 1);
+  color: var(--color-primary);
 }
 .input {
-  font-family: 'Montserrat', sans-serif;
+  font-family: var(--font-alt);
   font-weight: 500;
-  font-size: 14px;
-  padding: 19px 54px;
-  border-radius: 8px;
+  font-size: var(--font-size-base);
+  padding: var(--space-md) var(--space-xxl);
+  border-radius: var(--radius-sm);
   border: none;
   width: 100%;
-  margin: 0 20px;
+  margin: 0 var(--space-md);
 }
 .input:focus {
   outline: none;
@@ -42,7 +38,7 @@
 .inputWrapper {
   position: relative;
 
-  margin-bottom: 65px;
+  margin-bottom: var(--space-xxl);
   width: 100%;
   max-width: 808px;
   display: flex;
@@ -52,10 +48,10 @@
   position: absolute;
   width: 17px;
   height: 18px;
-  left: 35px;
-  top: 19px;
+  left: 45px;
+  top: 21px;
   cursor: pointer;
-  transition: transform 0.2s ease;
+  transition: transform var(--transition-fast);
 }
 .searchIco:hover {
   transform: scale(1.25);
@@ -63,13 +59,13 @@
 
 @media (max-width: 726px) {
   .h1 {
-    font-size: 48px;
+    font-size: var(--font-size-heading-lg);
   }
   .searchIco {
     left: 92%;
   }
   .input {
-    padding-left: 16px;
+    padding-left: var(--space-md);
   }
 }
 
