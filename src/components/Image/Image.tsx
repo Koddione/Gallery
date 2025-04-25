@@ -25,7 +25,7 @@ export const Image = ({
 }: ImageProps) => {
   return (
     <>
-      <div className={styles.shadow}></div>
+      <div className={styles.shadow} onClick={onClose}></div>
       <div className={styles.wrapper}>
         <div className={styles.container}>
           <button className={styles.close} onClick={onClose}>
