@@ -1,9 +1,9 @@
-import { UNSPLASH_ENDPOINTS } from '@constants/apiEndpoints';
+import { UNSPLASH_BASE_URL, UNSPLASH_ENDPOINTS } from '@constants/apiEndpoints';
 import { UnsplashPhoto } from '@customTypes/unsplashPhoto';
 import axios from 'axios';
 
 export const unsplashApi = axios.create({
-  baseURL: 'https://api.unsplash.com',
+  baseURL: UNSPLASH_BASE_URL,
   headers: {
     Authorization: `Client-ID ${import.meta.env.VITE_UNSPLASH_ACCESS_KEY}`,
   },

@@ -1,3 +1,4 @@
+import { ROUTES } from '@constants/routes';
 import { Category } from '@pages/Category/Category';
 import { Favourites } from '@pages/Favourites/Favourites';
 import { Images } from '@pages/Images/Images';
@@ -8,11 +9,11 @@ import { Route, Routes } from 'react-router-dom';
 function App() {
   return (
     <Routes>
-      <Route path="/" element={<Layout />}>
+      <Route path={ROUTES.CATEGORIES} element={<Layout />}>
         <Route index element={<Category />} />
-        <Route path="/images" element={<Images />} />
-        <Route path="/favourites" element={<Favourites />} />
-        <Route path="/*" element={<NotFound />} />
+        <Route path={ROUTES.IMAGES} element={<Images />} />
+        <Route path={ROUTES.FAVOURITES} element={<Favourites />} />
+        <Route path={ROUTES.NOTFOUND} element={<NotFound />} />
       </Route>
     </Routes>
   );
