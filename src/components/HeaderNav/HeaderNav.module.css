@@ -58,12 +58,6 @@
   font-size: var(--font-size-lg-alt);
   font-family: var(--font-heading);
   transition: all var(--transition-medium);
-  position: absolute;
-  top: var(--space-xxl);
-  left: 0;
-  right: 0;
-  background: var(--color-gradient);
-  padding-bottom: var(--space-md);
 }
 
 .category,
@@ -99,6 +93,12 @@
     transform: translateY(-20px);
     opacity: 0;
     transition: all var(--transition-medium);
+    position: absolute;
+    top: var(--space-xxl);
+    left: 0;
+    right: 0;
+    background: var(--color-gradient);
+    padding-bottom: var(--space-md);
   }
 
   .pages.show {
