@@ -41,14 +41,25 @@
   transform: scale(1.2);
 }
 
-.photo {
+.photoWrapper {
+  position: relative;
   width: 600px;
   height: 500px;
-  object-fit: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
 }
 .description {
-  position: relative;
-  margin-top: -62px;
+  position: absolute;
+  margin-top: var(--space-xxxxl);
+  width: 100%;
+}
+.photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: var(--radius-md);
 }
 .left,
 .right {
@@ -96,8 +107,11 @@
   }
 }
 @media (max-width: 625px) {
-  .photo {
+  .photoWrapper {
     max-width: 380px;
     max-height: 300px;
+  }
+  .description {
+    margin-top: var(--space-xxxl-alt);
   }
 }

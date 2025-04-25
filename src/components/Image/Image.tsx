@@ -34,7 +34,7 @@ export const Image = ({
           <button className={styles.left} onClick={onPrev}>
             <Left />
           </button>
-          <div className={styles.photo}>
+          <div className={styles.photoWrapper}>
             <img
               className={styles.photo}
               src={photo.urls.small}
