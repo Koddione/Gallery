@@ -1,4 +1,5 @@
 import { FavouritesLogo } from '@assets/icons/FavouritesLogo';
+import { TEXT_LIMIT } from '@constants/textLimits';
 import { UnsplashPhoto } from '@customTypes/unsplashPhoto';
 import { toggleFavourite } from '@utils/favouritesStorage';
 import { truncateText } from '@utils/truncateText';
@@ -24,7 +25,9 @@ export const PhotoCard = ({
     onFavouriteChange(newState);
   };
   const name = photo.name || photo.alt_description || 'No name';
-  const displayText = isFullView ? truncateText(name, 84) : truncateText(name, 30);
+  const displayText = isFullView
+    ? truncateText(name, TEXT_LIMIT.fullView)
+    : truncateText(name, TEXT_LIMIT.default);
 
   return (
     <div className={`${styles.description} ${isFullView ? styles.full : ''}`}>

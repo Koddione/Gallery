@@ -1,4 +1,10 @@
 import { UNSPLASH_BASE_URL, UNSPLASH_ENDPOINTS } from '@constants/apiEndpoints';
+import { DEFAULT_ORDER_BY, DEFAULT_PAGE, DEFAULT_PER_PAGE } from '@constants/pagination';
+import {
+  CategorySortOption,
+  GeneralSortOption,
+  SORT_OPTIONS,
+} from '@constants/sortOptions';
 import { UnsplashPhoto } from '@customTypes/unsplashPhoto';
 import axios from 'axios';
 
@@ -11,9 +17,9 @@ export const unsplashApi = axios.create({
 
 export const fetchPhotosByCategory = async (
   category: string,
-  perPage = 12,
-  page = 1,
-  orderBy: 'relevant' | 'latest' = 'relevant',
+  perPage = DEFAULT_PER_PAGE,
+  page = DEFAULT_PAGE,
+  orderBy: CategorySortOption = SORT_OPTIONS.DEFAULT,
   search: string = '',
 ) => {
   const query = [category, search].filter(Boolean).join(' ');
@@ -30,9 +36,9 @@ export const fetchPhotosByCategory = async (
 };
 
 export const fetchGeneralPhotos = async (
-  perPage = 12,
-  page = 1,
-  orderBy: 'latest' | 'oldest' | 'popular' = 'latest',
+  perPage = DEFAULT_PER_PAGE,
+  page = DEFAULT_PAGE,
+  orderBy: GeneralSortOption = SORT_OPTIONS.LATEST,
 ): Promise<UnsplashPhoto[]> => {
   const response = await unsplashApi.get(UNSPLASH_ENDPOINTS.photos, {
     params: {

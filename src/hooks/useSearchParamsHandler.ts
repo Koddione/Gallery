@@ -1,4 +1,5 @@
 import { SEARCH_PARAMS } from '@constants/searchParams';
+import { SORT_OPTIONS, SortOption } from '@constants/sortOptions';
 import { useSearchParams } from 'react-router-dom';
 
 export const useSearchParamsHandler = () => {
@@ -6,7 +7,8 @@ export const useSearchParamsHandler = () => {
   const category = searchParams.get(SEARCH_PARAMS.CATERGORY) || '';
   const page = parseInt(searchParams.get(SEARCH_PARAMS.PAGE) || '1');
   const sortParamRaw = searchParams.get(SEARCH_PARAMS.SORT);
-  const sort: 'relevant' | 'latest' = sortParamRaw === 'latest' ? 'latest' : 'relevant';
+  const sort: SortOption =
+    sortParamRaw === SORT_OPTIONS.LATEST ? SORT_OPTIONS.LATEST : SORT_OPTIONS.DEFAULT;
   const search = searchParams.get(SEARCH_PARAMS.SEARCH) || '';
 
   const handleSortChange = (newSort: string) => {

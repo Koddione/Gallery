@@ -1,5 +1,6 @@
 import { Left } from '@assets/icons/LeftArrow';
 import { Right } from '@assets/icons/RightArrow';
+import { PAGES_TO_SHOW } from '@constants/pagination';
 import { useEffect, useState } from 'react';
 
 import styles from './Pagination.module.css';
@@ -16,11 +17,10 @@ export const Pagination: React.FC<PaginationProps> = ({
   totalPages,
 }) => {
   const [pageRange, setPageRange] = useState<number[]>([]);
-  const pagesToShow = 4;
 
   useEffect(() => {
-    const startPage = Math.floor((page - 1) / pagesToShow) * pagesToShow + 1;
-    const endPage = Math.min(startPage + pagesToShow - 1, totalPages);
+    const startPage = Math.floor((page - 1) / PAGES_TO_SHOW) * PAGES_TO_SHOW + 1;
+    const endPage = Math.min(startPage + PAGES_TO_SHOW - 1, totalPages);
     setPageRange(
       Array.from({ length: endPage - startPage + 1 }, (_, i) => startPage + i),
     );
@@ -33,14 +33,14 @@ export const Pagination: React.FC<PaginationProps> = ({
   const handleNextRange = () => {
     const nextStart = pageRange[pageRange.length - 1] + 1;
     if (nextStart <= totalPages) {
-      setPageRange(Array.from({ length: pagesToShow }, (_, i) => nextStart + i));
+      setPageRange(Array.from({ length: PAGES_TO_SHOW }, (_, i) => nextStart + i));
     }
   };
 
   const handlePrevRange = () => {
-    const prevStart = pageRange[0] - pagesToShow;
+    const prevStart = pageRange[0] - PAGES_TO_SHOW;
     if (prevStart >= 1) {
-      setPageRange(Array.from({ length: pagesToShow }, (_, i) => prevStart + i));
+      setPageRange(Array.from({ length: PAGES_TO_SHOW }, (_, i) => prevStart + i));
     }
   };
 
