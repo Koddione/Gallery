@@ -13,7 +13,7 @@
   --color-background: rgba(0, 0, 0, 0.288);
   --color-gradient: linear-gradient(
     90deg,
-    rgba(52, 51, 51, 0.96) 38.05%,
+    rgba(52, 51, 51, 1) 38.05%,
     rgba(72, 72, 72, 1) 69.22%,
     rgba(40, 40, 40, 1) 98.98%
   );
@@ -48,6 +48,7 @@
   --space-sm: 10px;
   --space-md: 20px;
   --space-lg: 25px;
+  --space-lg-alt: 30px;
   --space-xl: 40px;
   --space-xxl: 65px;
   --space-xxxl: 85px;

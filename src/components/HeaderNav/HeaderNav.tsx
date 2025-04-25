@@ -3,7 +3,7 @@ import { FavouritesLogo } from '@assets/icons/FavouritesLogo';
 import { ImagesLogo } from '@assets/icons/ImagesLogo';
 import { LogoModsen } from '@components/LogoModsen/LogoModsen';
 import { ROUTES } from '@constants/routes';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { NavLink, useLocation } from 'react-router';
 
 import styles from './HeaderNav.module.css';
@@ -11,13 +11,29 @@ import styles from './HeaderNav.module.css';
 export const HeaderNav = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
+  const menuRef = useRef<HTMLDivElement>(null);
   const isFavouritesPage = location.pathname === ROUTES.FAVOURITES;
 
   const toggleMenu = () => setIsMenuOpen((prev) => !prev);
   const closeMenu = () => setIsMenuOpen(false);
 
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        isMenuOpen &&
+        menuRef.current &&
+        !menuRef.current.contains(event.target as Node)
+      ) {
+        setIsMenuOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, [isMenuOpen]);
+
   return (
-    <div className={`${styles.header} ${isMenuOpen ? styles.open : ''}`}>
+    <div ref={menuRef} className={`${styles.header} ${isMenuOpen ? styles.open : ''}`}>
       <div className={styles.info}>
         <LogoModsen />
 

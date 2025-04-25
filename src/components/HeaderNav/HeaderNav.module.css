@@ -15,6 +15,7 @@
   padding: var(--space-lg) 0;
   position: relative;
   transition: all var(--transition-medium);
+  position: relative;
 }
 
 .burger {
@@ -57,6 +58,12 @@
   font-size: var(--font-size-lg-alt);
   font-family: var(--font-heading);
   transition: all var(--transition-medium);
+  position: absolute;
+  top: var(--space-xxl);
+  left: 0;
+  right: 0;
+  background: var(--color-gradient);
+  padding-bottom: var(--space-md);
 }
 
 .category,
@@ -109,7 +116,12 @@
 
   .header.open .burger {
     position: absolute;
-    top: 0px;
+    top: var(--space-lg-alt);
     right: var(--space-sm);
+  }
+}
+@media (max-width: 442px) {
+  .header.open .burger {
+    top: 0;
   }
 }
