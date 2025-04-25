@@ -1,5 +1,5 @@
 import { UNSPLASH_BASE_URL, UNSPLASH_ENDPOINTS } from '@constants/apiEndpoints';
-import { DEFAULT_ORDER_BY, DEFAULT_PAGE, DEFAULT_PER_PAGE } from '@constants/pagination';
+import { DEFAULT_PAGE, DEFAULT_PER_PAGE } from '@constants/pagination';
 import {
   CategorySortOption,
   GeneralSortOption,
