@@ -17,6 +17,22 @@ export const Images = () => {
   const { isOpen, selectedPhoto, openPhoto, closePhoto, showPrev, showNext } =
     usePhotoViewer(photos);
 
+  const getPhotoClickHandler = (index: number) => (e: React.MouseEvent) => {
+    if ((e.target as HTMLElement).closest('button')) return;
+    openPhoto(index);
+  };
+
+  const getFavouriteChangeHandler = (photoId: string) => (isFav: boolean) => {
+    handleFavouriteChange(photoId, isFav);
+  };
+
+  const getSelectedFavouriteChangeHandler = () => (isFav: boolean) =>
+    selectedPhoto && handleFavouriteChange(selectedPhoto.id, isFav);
+
+  const getPageChangeHandler = (totalPages: number) => (newPage: number) => {
+    handlePageChange(newPage, totalPages);
+  };
+
   return (
     <div className={styles.container}>
       {photos.length !== 0 && <Sorting onSortChange={handleSortChange} />}
@@ -35,10 +51,7 @@ export const Images = () => {
             <div
               key={photo.id}
               className={styles.photo}
-              onClick={(e) => {
-                if ((e.target as HTMLElement).closest('button')) return;
-                openPhoto(index);
-              }}
+              onClick={getPhotoClickHandler(index)}
             >
               <img
                 className={styles.image}
@@ -48,7 +61,7 @@ export const Images = () => {
               <PhotoCard
                 photo={photo}
                 isFavourite={favouriteIds.includes(photo.id)}
-                onFavouriteChange={(isFav) => handleFavouriteChange(photo.id, isFav)}
+                onFavouriteChange={getFavouriteChangeHandler(photo.id)}
               />
             </div>
           ))
@@ -61,13 +74,13 @@ export const Images = () => {
           onPrev={showPrev}
           onNext={showNext}
           isFavourite={favouriteIds.includes(selectedPhoto.id)}
-          onFavouriteChange={(isFav) => handleFavouriteChange(selectedPhoto.id, isFav)}
+          onFavouriteChange={getSelectedFavouriteChangeHandler()}
         />
       )}
       {photos.length !== 0 && (
         <Pagination
           page={page}
-          handlePageChange={(newPage) => handlePageChange(newPage, totalPages)}
+          handlePageChange={getPageChangeHandler(totalPages)}
           totalPages={totalPages}
         />
       )}

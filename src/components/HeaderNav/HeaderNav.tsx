@@ -13,6 +13,9 @@ export const HeaderNav = () => {
   const location = useLocation();
   const isFavouritesPage = location.pathname === ROUTES.FAVOURITES;
 
+  const toggleMenu = () => setIsMenuOpen((prev) => !prev);
+  const closeMenu = () => setIsMenuOpen(false);
+
   return (
     <div className={`${styles.header} ${isMenuOpen ? styles.open : ''}`}>
       <div className={styles.info}>
@@ -20,7 +23,7 @@ export const HeaderNav = () => {
 
         <button
           className={`${styles.burger} ${isMenuOpen ? styles.open : ''}`}
-          onClick={() => setIsMenuOpen((prev) => !prev)}
+          onClick={toggleMenu}
           aria-label="Menu toggle"
         >
           <span />
@@ -34,7 +37,7 @@ export const HeaderNav = () => {
             className={({ isActive }) =>
               `${styles.category} ${isActive ? styles.active : ''}`
             }
-            onClick={() => setIsMenuOpen(false)}
+            onClick={closeMenu}
           >
             <CategoryLogo />
             Category
@@ -44,7 +47,7 @@ export const HeaderNav = () => {
             className={({ isActive }) =>
               `${styles.images} ${isActive ? styles.active : ''}`
             }
-            onClick={() => setIsMenuOpen(false)}
+            onClick={closeMenu}
           >
             <ImagesLogo />
             Images
@@ -54,7 +57,7 @@ export const HeaderNav = () => {
             className={({ isActive }) =>
               `${styles.favourites} ${isActive ? styles.active : ''}`
             }
-            onClick={() => setIsMenuOpen(false)}
+            onClick={closeMenu}
           >
             <FavouritesLogo filled={isFavouritesPage} />
             Favourites

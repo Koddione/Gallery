@@ -31,6 +31,17 @@ export const Favourites = () => {
 
   const isEmpty = favourites.length === 0;
 
+  const getPhotoClickHandler = (index: number) => () => {
+    openPhoto(index);
+  };
+
+  const getFavouriteChangeHandler = (photoId: string) => (isFav: boolean) => {
+    handleFavouriteChange(photoId, isFav);
+  };
+
+  const getSelectedFavouriteChangeHandler = () => (isFav: boolean) =>
+    selectedPhoto && handleFavouriteChange(selectedPhoto.id, isFav);
+
   return (
     <div className={styles.container}>
       {!isEmpty && (
@@ -50,7 +61,7 @@ export const Favourites = () => {
             <div
               key={photo.id}
               className={styles.photo}
-              onClick={() => openPhoto(favourites.indexOf(photo))}
+              onClick={getPhotoClickHandler(favourites.indexOf(photo))}
             >
               <img
                 className={styles.image}
@@ -60,7 +71,7 @@ export const Favourites = () => {
               <PhotoCard
                 photo={photo}
                 isFavourite={true}
-                onFavouriteChange={(isFav) => handleFavouriteChange(photo.id, isFav)}
+                onFavouriteChange={getFavouriteChangeHandler(photo.id)}
               />
             </div>
           ))}
@@ -70,7 +81,7 @@ export const Favourites = () => {
         <Image
           photo={selectedPhoto}
           isFavourite={selectedPhotoIsFavourite}
-          onFavouriteChange={(isFav) => handleFavouriteChange(selectedPhoto.id, isFav)}
+          onFavouriteChange={getSelectedFavouriteChangeHandler()}
           onClose={closePhoto}
           onPrev={showPrev}
           onNext={showNext}

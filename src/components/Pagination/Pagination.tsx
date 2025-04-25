@@ -44,6 +44,10 @@ export const Pagination: React.FC<PaginationProps> = ({
     }
   };
 
+  const getPageClickHandler = (pageNumber: number) => () => {
+    goToPage(pageNumber);
+  };
+
   return (
     <div className={styles.pagination}>
       {pageRange[0] > 1 && (
@@ -55,7 +59,7 @@ export const Pagination: React.FC<PaginationProps> = ({
         {pageRange.map((p) => (
           <button
             key={p}
-            onClick={() => goToPage(p)}
+            onClick={getPageClickHandler(p)}
             className={`${styles.pageButton} ${p === page ? styles.active : ''}`}
           >
             {p}

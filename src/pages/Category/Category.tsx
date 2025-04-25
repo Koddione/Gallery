@@ -48,6 +48,10 @@ export const Category = () => {
     navigate(`${ROUTES.IMAGES}?category=${category}&${SEARCH_PARAMS.PAGE}=1`);
   };
 
+  const getCategoryClickHandler = (category: string) => () => {
+    handleClick(category);
+  };
+
   return (
     <>
       <div className={styles.container}>
@@ -61,7 +65,7 @@ export const Category = () => {
             <div
               className={styles.category}
               key={category}
-              onClick={() => handleClick(category)}
+              onClick={getCategoryClickHandler(category)}
             >
               {imageUrl ? (
                 <img src={imageUrl} alt={category} className={styles.imageCategory} />
