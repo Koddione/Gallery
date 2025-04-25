@@ -11,3 +11,8 @@ export type GeneralSortOption =
   | typeof SORT_OPTIONS.LATEST
   | typeof SORT_OPTIONS.OLDEST
   | typeof SORT_OPTIONS.POPULAR;
+
+export const sortOptions: { label: string; value: SortOption }[] = [
+  { label: 'relevant', value: SORT_OPTIONS.DEFAULT },
+  { label: 'Latest', value: SORT_OPTIONS.LATEST },
+];

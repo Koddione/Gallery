@@ -1,4 +1,5 @@
 import { BottomArrow } from '@assets/icons/BottomArrow';
+import { sortOptions } from '@constants/sortOptions';
 import { useState } from 'react';
 
 import styles from './Sorting.module.css';
@@ -32,8 +33,11 @@ export const Sorting = ({ onSortChange }: SortingProps) => {
           onBlur={handleBlur}
           onChange={handleChange}
         >
-          <option value="relevant">Relevant</option>
-          <option value="latest">Latest</option>
+          {sortOptions.map(({ label, value }) => (
+            <option key={value} value={value}>
+              {label}
+            </option>
+          ))}
         </select>
         <BottomArrow className={`${styles.arrow} ${isOpen ? styles.rotated : ''}`} />
       </div>

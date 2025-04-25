@@ -1,8 +1,6 @@
-import { FacebookLogo } from '@assets/icons/FacebookLogo';
-import { GitHubLogo } from '@assets/icons/GitHubLogo';
-import { InstagramLogo } from '@assets/icons/InstagramLogo';
-import { TwitterLogo } from '@assets/icons/TwitterLogo';
 import { LogoModsen } from '@components/LogoModsen/LogoModsen';
+
+import { footerSections, socialLinks } from '@/constants/footerData';
 
 import styles from './Footer.module.css';
 
@@ -17,48 +15,23 @@ export const Footer = () => {
             breathtaking landscapes to vibrant portrait
           </p>
           <div className={styles.social}>
-            <div className={styles.twitter}>
-              <TwitterLogo />
-            </div>
-            <div className={styles.facebook}>
-              <FacebookLogo />
-            </div>
-            <div className={styles.instagram}>
-              <InstagramLogo />
-            </div>
-            <div className={styles.github}>
-              <GitHubLogo />
-            </div>
+            {socialLinks.map(({ component: Component, name }) => (
+              <div key={name} className={styles[name]}>
+                {<Component />}
+              </div>
+            ))}
           </div>
         </div>
-        <div className={styles.company}>
-          <p className={styles.head}>COMPANY</p>
-          <a href="#">About</a>
-          <a href="#">Features</a>
-          <a href="#">Works</a>
-          <a href="#">Career</a>
-        </div>
-        <div className={styles.help}>
-          <p className={styles.head}>HELP</p>
-          <a href="#">Customer Support</a>
-          <a href="#">Delivery Details</a>
-          <a href="#">Terms & Conditions</a>
-          <a href="#">Privacy Policy</a>
-        </div>
-        <div className={styles.FAQ}>
-          <p className={styles.head}>FAQ</p>
-          <a href="#">Account</a>
-          <a href="#">Manage Deliveries</a>
-          <a href="#">Orders</a>
-          <a href="#">Payments</a>
-        </div>
-        <div className={styles.resources}>
-          <p className={styles.head}>Resources</p>
-          <a href="#">Free eBooks</a>
-          <a href="#">Development Tutorial</a>
-          <a href="#">How to - Blog</a>
-          <a href="#">Youtube Playlist</a>
-        </div>
+        {footerSections.map(({ title, links }) => (
+          <div key={title} className={styles[title.toLowerCase()]}>
+            <p className={styles.head}>{title}</p>
+            {links.map((link, id) => (
+              <a key={id} href="#">
+                {link}
+              </a>
+            ))}
+          </div>
+        ))}
       </div>
       <p className={styles.modsenGallery}>
         Modsen.gallery © 2000-2025, All Rights Reserved

@@ -14,7 +14,7 @@
 .info,
 .company,
 .help,
-.FAQ,
+.faq,
 .resources {
   display: flex;
   flex-direction: column;
@@ -71,7 +71,7 @@
 @media (max-width: 1030px) {
   .company a,
   .help a,
-  .FAQ a,
+  .faq a,
   .resources a {
     display: none;
     margin-bottom: var(--space-md);
@@ -84,7 +84,7 @@
   .info,
   .company,
   .help,
-  .FAQ,
+  .faq,
   .resources {
     margin-bottom: var(--space-xl);
     font-size: var(--font-size-lg);
