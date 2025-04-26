@@ -1,46 +1,29 @@
-# React + TypeScript + Vite
+# Modsen Gallery
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, responsive image gallery built with **React**, **TypeScript**, and **Unsplash API**.
 
-Currently, two official plugins are available:
+## ✨ Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- 📸 Browse high-quality photos from Unsplash
+- 🔎 Search and filter by categories
+- ⭐ Add photos to favorites (with sessionStorage support)
+- 📱 Responsive and mobile-friendly design
+- 🎨 Theming with CSS variables
 
-## Expanding the ESLint configuration
+## 🔧 Technologies Used
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- **React** - JavaScript library for building user interfaces
+- **TypeScript** - Strongly typed programming language that builds on JavaScript
+- **Unsplash API** - API for fetching high-quality photos
+- **CSS Variables** - For dynamic theming and styling
+- **SessionStorage** - For persisting favorites
+- **Vite** - A module builder that allows you to compile JavaScript modules into a single JS file
+- **React router dom** - Library for navigation between different parts of a web application
+- **Npm** - Package manager
+- **Eslint** – For code linting
+- **Prettier** – For code auto-formatting
+- **Husky** – For setting up precommit hooks
 
-```js
-export default tseslint.config({
-  extends: [
-    ...tseslint.configs.recommendedTypeChecked,
-    ...tseslint.configs.strictTypeChecked,
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-});
-```
+## 🔗 Link to the Project
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-import reactX from 'eslint-plugin-react-x';
-import reactDom from 'eslint-plugin-react-dom';
-
-export default tseslint.config({
-  plugins: {
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-});
-```
+you can check out the live project here: [Modsen Gallery](https://modsen-gallery-site.netlify.app/)
