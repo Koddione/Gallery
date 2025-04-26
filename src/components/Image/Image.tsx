@@ -37,7 +37,7 @@ export const Image = ({
           <div className={styles.photoWrapper}>
             <img
               className={styles.photo}
-              src={photo.urls.small}
+              src={photo.urls.regular}
               alt={photo.alt_description || 'Image'}
             />
             <div className={styles.description}>
