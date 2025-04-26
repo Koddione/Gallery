@@ -1,6 +1,7 @@
 import { fetchGeneralPhotos, fetchPhotosByCategory } from '@api/unsplash';
 import { DEFAULT_TOTAL_PAGES } from '@constants/pagination';
 import { PHOTOS_PER_PAGE } from '@constants/photosPerPage';
+import { SORT_OPTIONS } from '@constants/sortOptions';
 import { UnsplashPhoto } from '@customTypes/unsplashPhoto';
 import { useEffect, useState } from 'react';
 
@@ -18,7 +19,8 @@ export const usePhotos = (
     const loadPhotos = async () => {
       setIsLoading(true);
       if (!category && !search) {
-        const validSort = sort === 'latest' ? 'latest' : 'popular';
+        const validSort =
+          sort === SORT_OPTIONS.LATEST ? SORT_OPTIONS.LATEST : SORT_OPTIONS.POPULAR;
         const data = await fetchGeneralPhotos(PHOTOS_PER_PAGE, page, validSort);
         setPhotos(data);
         setTotalPages(DEFAULT_TOTAL_PAGES);
