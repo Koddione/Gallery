@@ -60,11 +60,6 @@
   color: var(--color-light-primary);
 }
 
-.modsenGallery {
-  margin-left: var(--space-xxl);
-  padding-bottom: var(--space-xl);
-}
-
 .instagram {
   position: relative;
 }

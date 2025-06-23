@@ -1,5 +1,4 @@
-import { LogoModsen } from '@components/LogoModsen/LogoModsen';
-
+import { Logo } from '@/components/Logo/Logo';
 import { footerSections, socialLinks } from '@/constants/footerData';
 
 import styles from './Footer.module.css';
@@ -9,7 +8,7 @@ export const Footer = () => {
     <footer className={styles.footer}>
       <div className={styles.container}>
         <div className={styles.info}>
-          <LogoModsen />
+          <Logo />
           <p className={styles.text}>
             We have images that capture every mood and inspire every vision. From
             breathtaking landscapes to vibrant portrait
@@ -33,9 +32,6 @@ export const Footer = () => {
           </div>
         ))}
       </div>
-      <p className={styles.modsenGallery}>
-        Modsen.gallery © 2000-2025, All Rights Reserved
-      </p>
     </footer>
   );
 };

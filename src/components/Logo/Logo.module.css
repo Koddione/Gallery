@@ -4,7 +4,7 @@
   z-index: 1;
 }
 
-.Modsen {
+.logoSvg {
   position: relative;
   display: flex;
   gap: var(--space-xxs);
@@ -28,7 +28,7 @@
   font-weight: 500;
   font-style: italic;
   font-size: var(--font-size-xl);
-  left: 173px;
+  left: 133px;
   top: 13px;
   color: var(--color-primary);
   z-index: 1;
