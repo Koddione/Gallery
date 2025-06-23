@@ -1,4 +1,4 @@
-# Modsen Gallery
+#Gallery
 
 A modern, responsive image gallery built with **React**, **TypeScript**, and **Unsplash API**.
 
@@ -24,6 +24,17 @@ A modern, responsive image gallery built with **React**, **TypeScript**, and **U
 - **Prettier** – For code auto-formatting
 - **Husky** – For setting up precommit hooks
 
+📌 About this project
+This project was developed by me as part of a technical assignment for the company Modsen (2025).
+
+🧑‍💻 All code was written by me from scratch.
+
+🎨 The UI design was provided by the company for the purpose of evaluation.
+
+🖼️ All branding/logos were replaced with neutral elements to avoid trademark usage.
+
+❗️ This is not a production or commercial product of Modsen, and is presented for portfolio/demo purposes only.
+
 ## 🔗 Link to the Project
 
-you can check out the live project here: [Modsen Gallery](https://modsen-gallery-site.netlify.app/)
+you can check out the live project here: [Gallery](https://modsen-gallery-site.netlify.app/)
