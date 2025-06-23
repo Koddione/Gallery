@@ -1,10 +1,11 @@
 import { CategoryLogo } from '@assets/icons/CategoryLogo';
 import { FavouritesLogo } from '@assets/icons/FavouritesLogo';
 import { ImagesLogo } from '@assets/icons/ImagesLogo';
-import { LogoModsen } from '@components/LogoModsen/LogoModsen';
 import { ROUTES } from '@constants/routes';
 import { useEffect, useRef, useState } from 'react';
 import { NavLink, useLocation } from 'react-router';
+
+import { Logo } from '@/components/Logo/Logo';
 
 import styles from './HeaderNav.module.css';
 
@@ -35,7 +36,7 @@ export const HeaderNav = () => {
   return (
     <div ref={menuRef} className={`${styles.header} ${isMenuOpen ? styles.open : ''}`}>
       <div className={styles.info}>
-        <LogoModsen />
+        <Logo />
 
         <button
           className={`${styles.burger} ${isMenuOpen ? styles.open : ''}`}

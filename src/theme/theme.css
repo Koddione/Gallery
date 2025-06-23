@@ -1,11 +1,11 @@
 :root {
-  --color-primary: rgba(241, 121, 0, 1);
-  --color-light-primary: rgba(224, 164, 73, 1);
+  --color-primary: rgb(96, 209, 67);
+  --color-light-primary: rgba(79, 252, 140, 1);
   --color-light-gray: rgba(249, 249, 249, 1);
   --color-gray: rgba(196, 196, 196, 1);
   --color-dark-gray: rgba(119, 119, 119, 1);
   --color-border: rgba(240, 241, 241, 1);
-  --color-error: rgba(241, 121, 0, 1);
+  --color-error: rgb(96, 209, 67);
   --color-white: rgba(255, 255, 255, 1);
   --color-white-muted: rgba(255, 255, 255, 0.6);
   --color-black: rgba(0, 0, 0, 1);
