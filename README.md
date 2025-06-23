@@ -24,7 +24,7 @@ A modern, responsive image gallery built with **React**, **TypeScript**, and **U
 - **Prettier** – For code auto-formatting
 - **Husky** – For setting up precommit hooks
 
-📌 About this project
+## 📌 About this project
 This project was developed by me as part of a technical assignment for the company Modsen (2025).
 
 🧑‍💻 All code was written by me from scratch.
